@@ -12,20 +12,21 @@
 <script>document.documentElement.classList.add('js')</script>
 <style>
 :root{
-  --cream:#fbf7f0; --paper:#fffdf8; --sand:#f3ece0;
-  --plum:#4a2a4c; --plum-2:#6d3a7a; --lilac:#c39bd3; --lilac-l:#efe6f3;
-  --leaf:#3f6b34; --leaf-d:#23402a; --leaf-l:#e4ecd9;
-  --honey:#e0a43a; --honey-d:#a8721a; --honey-l:#fbeccc;
-  --ink:#2b2430; --muted:#655c6b; --line:rgba(74,42,76,.14);
+  --cream:#fdfaf6; --paper:#ffffff; --sand:#f7f1ea;
+  --plum:#3d3150; --plum-2:#8467c2; --lilac:#d4c6f4; --lilac-l:#f0eafb;
+  --leaf:#4f8c6c; --leaf-d:#cfeadb; --leaf-l:#e4f4ea;
+  --honey:#f8c9a4; --honey-d:#c27a43; --honey-l:#fdeee2;
+  --butter:#fff0b8; --sky:#d9eaf8; --rose:#fadbe4;
+  --ink:#2f2a38; --muted:#6a6475; --line:rgba(61,49,80,.12);
   --f-d:'Fraunces',Georgia,serif; --f-b:'Nunito',system-ui,-apple-system,'Segoe UI',sans-serif;
   --r:24px; --r-s:16px;
   --sec:128px; --gut:32px;
-  --shadow:0 24px 48px -24px rgba(58,32,60,.28);
+  --shadow:0 24px 48px -24px rgba(61,49,80,.22);
 }
 *,*::before,*::after{box-sizing:border-box}
 html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
 html,body{overflow-x:clip}
-body{margin:0;background:var(--cream);color:var(--ink);font-family:var(--f-b);font-size:16px;line-height:1.6;overflow-x:hidden}
+body{margin:0;background:var(--cream);color:var(--ink);font-family:var(--f-b);font-size:16px;line-height:1.6}
 img{max-width:100%;height:auto;display:block}
 a{color:inherit}
 h1,h2,h3{font-family:var(--f-d);font-variation-settings:'SOFT' 100;color:var(--plum);margin:0;line-height:1.12;font-weight:600;text-wrap:balance}
@@ -39,7 +40,7 @@ p{margin:0}
 .lead{font-size:20px;color:var(--muted);text-wrap:balance}
 .s{display:block;text-wrap:balance}
 p,li,figcaption,cite,.ans{text-wrap:pretty}
-.tile p,.prog .pb p,.step p,.rv p,.ms .card p,.roles span,.space-txt p,.pnote p,.tradition p,.f-pola p,.visit-r>p,.ms .card p{text-wrap:balance}
+.tile p,.prog .pb p,.step p,.rv p,.roles span,.space-txt p,.pnote p,.tradition p,.visit-r>p{text-wrap:balance}
 .sec-head{max-width:760px;margin-bottom:64px}
 .sec-head h2{margin:16px 0 20px}
 .sec-head.center{margin-left:auto;margin-right:auto;text-align:center}
@@ -48,22 +49,25 @@ em.hand{font-style:italic;color:var(--plum-2);position:relative;white-space:nowr
 .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);border:0}
 
 /* dugmad: primary / secondary / tertiary */
-.btn{--bg:var(--plum);--fg:var(--cream);display:inline-flex;align-items:center;gap:12px;min-height:56px;padding:0 28px;border-radius:999px;background:var(--bg);color:var(--fg);font:800 16px/1 var(--f-b);text-decoration:none;border:2px solid var(--bg);cursor:pointer;transition:transform .25s,background .25s,color .25s,box-shadow .25s;white-space:nowrap}
-.btn:hover{transform:translateY(-2px);box-shadow:0 12px 24px -12px rgba(74,42,76,.6)}
-.btn.sec-b{--bg:transparent;--fg:var(--plum);border-color:var(--plum)}
-.btn.sec-b:hover{background:var(--plum);color:var(--cream)}
-.btn.ter{background:none;border:0;padding:0;min-height:0;color:var(--plum);box-shadow:none;text-decoration:underline;text-decoration-thickness:2px;text-underline-offset:6px;text-decoration-color:var(--lilac)}
-.btn.ter:hover{text-decoration-color:var(--plum);transform:none}
+.btn{--bg:var(--lilac);--fg:var(--plum);--sh:var(--plum);display:inline-flex;align-items:center;gap:12px;min-height:56px;padding:0 28px;border-radius:16px;background:var(--bg);color:var(--fg);font:800 16px/1 var(--f-b);text-decoration:none;border:2px solid var(--plum);box-shadow:4px 4px 0 var(--sh);cursor:pointer;transition:transform .2s cubic-bezier(.3,1.6,.5,1),box-shadow .2s,background .25s;white-space:nowrap}
+.btn:hover{transform:translate(-2px,-2px);box-shadow:6px 6px 0 var(--sh)}
+.btn:active{transform:translate(4px,4px);box-shadow:0 0 0 var(--sh)}
+.btn.sec-b{--bg:var(--paper)}
+.btn.sec-b:hover{background:var(--butter)}
+.btn.ter{background:linear-gradient(var(--butter),var(--butter)) 0 100%/100% 40% no-repeat;border:0;border-radius:0;padding:0 4px;min-height:32px;box-shadow:none;color:var(--plum);gap:8px;transition:background-size .3s}
+.btn.ter::after{content:"→";transition:translate .3s}
+.btn.ter:hover{background-size:100% 100%;transform:none;box-shadow:none}
+.btn.ter:hover::after{translate:4px 0}
 .btn svg{width:20px;height:20px;flex:none}
-.btn.has-arrow .ar{display:grid;place-items:center;width:32px;height:32px;margin-right:-16px;border-radius:50%;background:var(--honey);color:var(--plum)}
+.btn.has-arrow .ar{display:grid;place-items:center;width:32px;height:32px;margin-right:-12px;border-radius:10px;background:var(--paper);border:2px solid var(--plum);color:var(--plum)}
 
 /* gornja traka */
-.topbar{background:var(--plum);color:#f1e7f2;font-size:16px}
+.topbar{background:var(--lilac-l);color:var(--plum);font-size:16px}
 .topbar .wrap{display:flex;gap:24px;align-items:center;justify-content:space-between;min-height:40px;flex-wrap:wrap}
 .topbar a{text-decoration:none}
 .topbar .tb-l,.topbar .tb-r{display:flex;gap:24px;align-items:center}
 .open-st{display:inline-flex;align-items:center;gap:8px;font-weight:700}
-.open-st i{width:8px;height:8px;border-radius:50%;background:#9bd27c;box-shadow:0 0 0 4px rgba(155,210,124,.25)}
+.open-st i{width:8px;height:8px;border-radius:50%;background:#5fb57f;box-shadow:0 0 0 4px rgba(95,181,127,.25)}
 .open-st.closed i{background:#e9a07a;box-shadow:0 0 0 4px rgba(233,160,122,.25)}
 
 /* navigacija */
@@ -102,77 +106,60 @@ em.hand{font-style:italic;color:var(--plum-2);position:relative;white-space:nowr
 @keyframes draw{to{stroke-dashoffset:0}}
 .hero .lead{max-width:560px}
 .hero-cta{display:flex;flex-wrap:wrap;gap:16px;margin-top:36px}
-.chips{display:flex;flex-wrap:wrap;gap:12px;margin:40px 0 0;padding:0;list-style:none}
+.chips{display:grid;grid-template-columns:repeat(2,max-content);gap:12px;margin:40px 0 0;padding:0;list-style:none}
 .chips li{display:inline-flex;align-items:center;gap:8px;padding:8px 16px;border-radius:999px;background:var(--paper);border:1px solid var(--line);font-weight:700;font-size:16px;color:var(--plum)}
 .chips svg{width:16px;height:16px;color:var(--leaf)}
 
-.hero-vis{position:relative;width:100%;max-width:480px;justify-self:center;aspect-ratio:4/5}
-.arch-photo{position:absolute;left:5%;top:4%;width:90%;height:92%;border-radius:999px 999px 28px 28px;overflow:hidden;background:var(--sand);box-shadow:var(--shadow)}
-.arch-photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 60%}
-.arch-photo .ph-base{filter:grayscale(1) sepia(.35) brightness(1.08) contrast(.88) blur(1px)}
-.arch-photo .ph-col{clip-path:circle(150% at 50% 15%)}
-.js .arch-photo .ph-col{clip-path:circle(0% at 50% 15%)}
-.js .hero-vis.rung .arch-photo .ph-col{transition:clip-path 1.6s cubic-bezier(.65,0,.25,1);clip-path:circle(150% at 50% 15%)}
-.glint{position:absolute;inset:0;background:linear-gradient(105deg,transparent 35%,rgba(255,250,235,.55) 48%,transparent 60%);transform:translateX(-120%);pointer-events:none;mix-blend-mode:soft-light}
-.hero-vis.ring2 .glint{animation:glint 1.6s .3s ease-in-out}
-@keyframes glint{to{transform:translateX(120%)}}
-.wreath{position:absolute;inset:0;width:100%;height:100%;overflow:visible;pointer-events:none}
-.wreath .lf,.wreath .fl-in{transform-box:view-box;transform-origin:0 0}
-.js .wreath .lf{opacity:0}
-.js .go .wreath .lf{animation:leaf .7s var(--d) cubic-bezier(.3,1.6,.5,1) forwards}
-@keyframes leaf{from{opacity:0;scale:0}to{opacity:1;scale:1}}
-.js .wreath .fl-in{scale:0}
-.js .go .wreath .fl-in{animation:bloom .8s var(--d) cubic-bezier(.3,1.7,.5,1) forwards}
-.fl{--d:0s}
-@keyframes bloom{from{scale:0;rotate:-90deg}to{scale:1;rotate:0deg}}
-.bell{transform-box:view-box;transform-origin:200px 18px}
-.js .bell{opacity:0;translate:0 -24px}
-.js .go .bell{animation:bellin .9s 1.7s cubic-bezier(.3,1.5,.5,1) forwards}
-@keyframes bellin{to{opacity:1;translate:0 0}}
-.ringing .bell-swing{animation:swing 1.8s ease-in-out}
-.bell-swing{transform-box:view-box;transform-origin:200px 18px}
-@keyframes swing{0%{rotate:0deg}12%{rotate:16deg}28%{rotate:-13deg}44%{rotate:9deg}60%{rotate:-6deg}76%{rotate:3deg}100%{rotate:0deg}}
-.clapper{transform-box:view-box;transform-origin:200px 54px}
-.ringing .clapper{animation:clap 1.8s ease-in-out}
-@keyframes clap{0%{rotate:0deg}14%{rotate:-22deg}30%{rotate:18deg}46%{rotate:-12deg}62%{rotate:8deg}100%{rotate:0deg}}
-.waves circle{fill:none;stroke:var(--honey);stroke-width:2.5;opacity:0;transform-box:view-box;transform-origin:200px 76px}
-.ringing .waves circle{animation:wave 1.6s cubic-bezier(.2,.6,.3,1)}
-.ringing .waves circle:nth-child(2){animation-delay:.3s}
-.ringing .waves circle:nth-child(3){animation-delay:.6s}
-@keyframes wave{0%{opacity:.9;scale:.3}100%{opacity:0;scale:2.6}}
-.spark{position:absolute;width:16px;height:16px;color:var(--honey);opacity:0;pointer-events:none}
-.ringing .spark{animation:spark 1.8s var(--sd,0s) ease-out}
-@keyframes spark{0%{opacity:0;transform:translate(0,0) scale(.2) rotate(0)}25%{opacity:1}100%{opacity:0;transform:translate(var(--sx),var(--sy)) scale(1) rotate(180deg)}}
-
-.f-card{position:absolute;background:var(--paper);border-radius:var(--r-s);box-shadow:var(--shadow);padding:16px 20px;z-index:3}
-.js .f-card{opacity:0;translate:0 16px;transition:opacity .7s,translate .7s cubic-bezier(.3,1.4,.5,1)}
-.js .hero-vis.rung .f-card{opacity:1;translate:0 0}
-.js .hero-vis.rung .f-price{transition-delay:.9s}
-.js .hero-vis.rung .f-pola{transition-delay:1.2s}
-.js .hero-vis.rung .stamp{transition-delay:1.5s}
-.f-price{left:-12%;bottom:12%;display:flex;gap:16px;align-items:center}
-.f-price .ic{width:48px;height:48px;border-radius:12px;background:var(--honey-l);display:grid;place-items:center;color:var(--honey-d)}
+.hero-vis{position:relative;width:100%;max-width:520px;justify-self:center;aspect-ratio:1/1.08}
+/* umetaljka: tri oblika (luk, krug, kvadrat) upadnu u svoja pastelna mesta */
+.slot,.pc{position:absolute}
+.s-arch,.p-arch{left:0;top:8%;width:54%;height:74%;border-radius:999px 999px 28px 28px}
+.s-circ,.p-circ{right:2%;top:0;width:42%;aspect-ratio:1;border-radius:50%}
+.s-sq,.p-sq{right:0;top:45%;width:42%;aspect-ratio:1;border-radius:32px}
+.slot{translate:12px 12px;border:2px dashed rgba(61,49,80,.35)}
+.s-arch{background:var(--lilac)}.s-circ{background:var(--leaf-d)}.s-sq{background:var(--honey)}
+.pc{overflow:hidden;border:3px solid var(--plum);background:var(--sand);z-index:2}
+.pc img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:opacity .4s}
+.p-arch img{object-position:50% 60%}
+.js .pc{translate:0 -120vh;rotate:var(--r0,-10deg)}
+.p-circ{--r0:14deg}.p-sq{--r0:-18deg}
+.js .go .pc{animation:drop 1s calc(.2s + var(--i)*.38s) cubic-bezier(.34,1.36,.5,1) forwards}
+@keyframes drop{to{translate:0 0;rotate:0deg}}
+.js .go .slot{animation:thump .5s calc(.95s + var(--i)*.38s) ease-out}
+@keyframes thump{40%{scale:1.05}}
+.pc.flip{animation:flip .8s ease-in-out!important;translate:0 0;rotate:0deg}
+@keyframes flip{50%{transform:perspective(800px) rotateY(90deg) scale(.96)}}
+.deco{position:absolute;z-index:3;pointer-events:none}
+.deco svg{width:100%;height:100%;overflow:visible}
+.d-star{width:15%;left:47%;bottom:3%}
+.d-tri{width:9%;left:50%;top:1%}
+.d-dot{width:7%;left:4%;top:86%}
+.js .deco{scale:0}
+.js .go .deco{animation:pop .6s calc(1.5s + var(--i)*.15s) cubic-bezier(.3,1.8,.5,1) forwards,bob 5s calc(2.2s + var(--i)*.4s) ease-in-out infinite}
+@keyframes pop{to{scale:1}}
+@keyframes bob{0%,100%{translate:0 0;rotate:0deg}50%{translate:0 -8px;rotate:8deg}}
+.f-card{position:absolute;background:var(--paper);border-radius:var(--r-s);border:2px solid var(--plum);box-shadow:4px 4px 0 var(--plum);padding:16px 20px;z-index:4}
+.js .f-card,.js .stamp{opacity:0;translate:0 16px;transition:opacity .7s,translate .7s cubic-bezier(.3,1.4,.5,1)}
+.js .hero-vis.rung .f-card,.js .hero-vis.rung .stamp{opacity:1;translate:0 0}
+.js .hero-vis.rung .stamp{transition-delay:.25s}
+.f-price{left:-8%;bottom:4%;display:flex;gap:16px;align-items:center}
+.f-price .ic{width:48px;height:48px;border-radius:12px;background:var(--butter);display:grid;place-items:center;color:var(--plum)}
 .f-price .ic svg{width:24px;height:24px}
 .f-price small{display:block;font-size:12px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
 .f-price b{font-family:var(--f-d);font-size:24px;color:var(--plum);line-height:1.2;display:block}
 .f-price span{font-size:16px;color:var(--leaf);font-weight:700}
-.f-pola{right:-10%;bottom:-4%;padding:8px 8px 12px;width:36%;rotate:5deg}
-.f-pola img{border-radius:8px;aspect-ratio:3/4;object-fit:cover;width:100%;height:auto}
-.f-pola p{font-size:12px;font-weight:800;text-align:center;margin-top:8px;color:var(--plum)}
-.stamp{position:absolute;right:-6%;top:8%;width:112px;height:112px;z-index:3}
-.js .stamp{opacity:0;transition:opacity .8s}
-.js .hero-vis.rung .stamp{opacity:1}
+.stamp{position:absolute;left:-6%;top:-2%;width:112px;height:112px;z-index:4}
 .stamp svg{width:100%;height:100%;animation:spin 24s linear infinite}
-.stamp .core{position:absolute;inset:28px;border-radius:50%;background:var(--plum);color:var(--honey);display:grid;place-items:center;font-family:var(--f-d);font-weight:600;font-size:20px;line-height:1;text-align:center}
-.stamp .core small{display:block;font-family:var(--f-b);font-size:8px;letter-spacing:.12em;color:#f1e7f2;font-weight:800}
+.stamp .core{position:absolute;inset:28px;border-radius:50%;background:var(--butter);border:2px solid var(--plum);color:var(--plum);display:grid;place-items:center;font-family:var(--f-d);font-weight:600;font-size:20px;line-height:1;text-align:center}
+.stamp .core small{display:block;font-family:var(--f-b);font-size:8px;letter-spacing:.12em;color:var(--plum);font-weight:800}
 @keyframes spin{to{rotate:360deg}}
 
 /* traka */
-.ribbon{background:var(--leaf-d);color:#eef3e6;overflow:hidden;padding:20px 0;rotate:-1.2deg;margin:-24px -16px 0;position:relative;z-index:2}
+.ribbon{background:var(--lilac);color:var(--plum);border-block:2px solid var(--plum);overflow:hidden;padding:20px 0;rotate:-1.2deg;margin:-24px -16px 0;position:relative;z-index:2}
 .ribbon .track{display:flex;width:max-content;animation:marq 40s linear infinite}
 .ribbon ul{display:flex;gap:48px;padding:0 24px;margin:0;list-style:none;font-family:var(--f-d);font-size:24px;white-space:nowrap}
 .ribbon li{display:flex;align-items:center;gap:48px}
-.ribbon li::after{content:"✿";color:var(--lilac);font-size:20px}
+.ribbon li::after{content:"✿";color:var(--paper);font-size:20px}
 @keyframes marq{to{transform:translateX(-50%)}}
 
 /* zašto — bento */
@@ -199,7 +186,7 @@ em.hand{font-style:italic;color:var(--plum-2);position:relative;white-space:nowr
 .price-txt .lead{margin:20px 0 32px}
 .tabs{display:inline-flex;background:var(--paper);border-radius:999px;padding:4px;border:1px solid var(--line);margin-bottom:32px}
 .tabs button{border:0;background:none;padding:12px 20px;border-radius:999px;font:800 16px var(--f-b);color:var(--muted);cursor:pointer;transition:background .3s,color .3s}
-.tabs button[aria-selected=true]{background:var(--plum);color:var(--cream)}
+.tabs button[aria-selected=true]{background:var(--lilac);color:var(--plum)}
 .pnote{display:flex;gap:16px;align-items:flex-start;padding:20px 24px;background:var(--paper);border-radius:var(--r-s);border:1px solid var(--line);margin-top:16px}
 .pnote svg{width:24px;height:24px;flex:none;color:var(--leaf);margin-top:4px}
 .receipt-wrap{position:relative;justify-self:center;width:100%;max-width:440px}
@@ -226,10 +213,11 @@ em.hand{font-style:italic;color:var(--plum-2);position:relative;white-space:nowr
 @keyframes stamp{to{opacity:.92;scale:1}}
 
 /* programi */
-.prog-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:24px}
-.prog{grid-column:span 2;background:var(--paper);border-radius:var(--r);overflow:hidden;border:1px solid var(--line);display:flex;flex-direction:column;transition:transform .45s cubic-bezier(.3,1.4,.5,1),box-shadow .45s;rotate:var(--rot,0deg)}
-.prog:nth-child(1){--rot:-1.5deg}.prog:nth-child(2){--rot:1deg}.prog:nth-child(3){--rot:-.8deg}.prog:nth-child(4){--rot:1.2deg;grid-column:2/span 2}.prog:nth-child(5){--rot:-1deg}
-.prog:hover{rotate:0deg;transform:translateY(-8px);box-shadow:var(--shadow)}
+.prog-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:20px}
+.prog .pb{padding:24px 20px}
+.prog h3{font-size:20px}
+.prog{background:var(--paper);border-radius:var(--r);overflow:hidden;border:1px solid var(--line);display:flex;flex-direction:column;transition:transform .45s cubic-bezier(.3,1.4,.5,1),box-shadow .45s;}
+.prog:hover{transform:translateY(-8px);box-shadow:var(--shadow)}
 .prog .pimg{position:relative;aspect-ratio:4/3;overflow:hidden}
 .prog .pimg img{width:100%;height:100%;object-fit:cover;transition:transform 1s}
 .prog:hover .pimg img{transform:scale(1.06)}
@@ -237,7 +225,7 @@ em.hand{font-style:italic;color:var(--plum-2);position:relative;white-space:nowr
 .tag.free{background:var(--honey);color:var(--plum)}
 .prog .pb{padding:28px;display:flex;flex-direction:column;gap:12px;flex:1}
 .prog .pb p{color:var(--muted)}
-.prog .pb .btn{margin-top:auto;padding-top:8px;align-self:flex-start}
+.prog .pb .btn{margin-top:auto;align-self:flex-start}
 
 /* dialog */
 dialog{border:0;padding:0;border-radius:var(--r);max-width:760px;width:calc(100% - 32px);max-height:calc(100dvh - 48px);background:var(--paper);color:var(--ink);box-shadow:0 40px 80px -24px rgba(35,20,38,.5)}
@@ -274,89 +262,78 @@ dialog[open]{animation:dlg .45s cubic-bezier(.3,1.3,.5,1)}
 .space-txt .lead{margin:20px 0 16px}
 
 /* ljudi */
-.people{background:var(--plum);color:#efe5f1;position:relative;overflow:hidden}
-.people h2,.people h3{color:var(--paper)}
-.people .eyebrow{color:var(--honey)}
-.people .lead{color:#d9c8dd}
-.ppl-grid{display:grid;grid-template-columns:1.2fr .8fr;gap:64px;align-items:start}
-.quote{position:relative;font-family:var(--f-d);font-size:clamp(24px,2.6vw,32px);line-height:1.4;color:var(--paper);font-weight:400}
-.quote::before{content:"“";position:absolute;left:-8px;top:-64px;font-size:160px;line-height:1;color:var(--honey);opacity:.6}
-.quote cite{display:flex;gap:16px;align-items:center;margin-top:32px;font:700 16px var(--f-b);font-style:normal;color:#d9c8dd}
-.quote cite img{width:64px;height:64px;border-radius:50%;object-fit:cover;border:2px solid var(--honey)}
-.quote cite b{display:block;color:var(--paper);font-size:20px}
+.people{background:var(--lilac-l);position:relative;overflow:hidden}
+.people .eyebrow{color:var(--plum-2)}
+.ppl-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:64px;align-items:start}
+.pfacts{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:40px}
+.pfact{background:var(--paper);border:2px solid var(--plum);border-radius:var(--r);padding:24px 20px;box-shadow:4px 4px 0 var(--c,var(--lilac))}
+.pfact:nth-child(2){--c:var(--leaf-d)}.pfact:nth-child(3){--c:var(--honey)}
+.pfact b{display:block;font-family:var(--f-d);font-size:44px;line-height:1;color:var(--plum);font-weight:600;margin-bottom:12px}
+.pfact span{font-size:16px;font-weight:700;color:var(--muted);text-wrap:balance;display:block}
 .roles{list-style:none;padding:0;margin:0;display:grid;gap:12px}
-.roles li{display:flex;gap:16px;align-items:center;padding:16px 20px;border-radius:var(--r-s);background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);transition:background .3s}
-.roles li:hover{background:rgba(255,255,255,.12)}
-.roles li i{width:40px;height:40px;border-radius:50%;flex:none;display:grid;place-items:center;background:rgba(224,164,58,.18);color:var(--honey);font-style:normal}
+.roles li{display:flex;gap:16px;align-items:center;padding:16px 20px;border-radius:var(--r-s);background:var(--paper);border:1px solid var(--line);transition:transform .3s,box-shadow .3s}
+.roles li:hover{transform:translateX(4px);box-shadow:var(--shadow)}
+.roles li i{width:40px;height:40px;border-radius:12px;flex:none;display:grid;place-items:center;background:var(--butter);color:var(--plum);font-style:normal}
 .roles li i svg{width:20px;height:20px}
-.roles b{display:block;color:var(--paper)}
-.roles span{font-size:16px;color:#cdbad2}
+.roles b{display:block;color:var(--plum)}
+.roles span{font-size:16px;color:var(--muted)}
 .ppl-photos{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;margin-top:80px}
-.ppl-photos figure{margin:0;border-radius:var(--r);overflow:hidden;position:relative}
+.ppl-photos figure{margin:0;border-radius:var(--r);overflow:hidden;position:relative;border:2px solid var(--plum)}
 .ppl-photos figure:nth-child(even){translate:0 32px}
 .ppl-photos img{aspect-ratio:3/4;object-fit:cover;width:100%;transition:transform 1s}
 .ppl-photos figure:hover img{transform:scale(1.05)}
 .ppl-photos figcaption{position:absolute;left:12px;bottom:12px;background:var(--paper);color:var(--plum);font-weight:800;font-size:12px;padding:8px 12px;border-radius:999px}
-.tradition{margin-top:120px;display:grid;grid-template-columns:auto 1fr;gap:24px;align-items:center;padding:28px 32px;border-radius:var(--r);border:1px dashed rgba(224,164,58,.5)}
-.tradition svg{width:40px;height:40px;color:var(--honey)}
-.tradition p{color:#e3d6e6}
-.tradition b{color:var(--paper)}
+.tradition{margin-top:120px;display:grid;grid-template-columns:auto 1fr;gap:24px;align-items:center;padding:28px 32px;border-radius:var(--r);border:2px dashed var(--lilac);background:var(--paper)}
+.tradition svg{width:40px;height:40px;color:var(--plum-2)}
+.tradition p{color:var(--muted)}
+.tradition b{color:var(--plum)}
 
-/* kako smo rasli — drvo */
-.tree-sec{position:relative;background:linear-gradient(var(--cream),var(--sand))}
-.tree{position:relative;max-width:1040px;margin:0 auto;padding:40px 0 0}
-.trunk{position:absolute;left:50%;top:0;bottom:200px;width:12px;translate:-50% 0;border-radius:12px;background:rgba(108,74,52,.12);overflow:hidden}
-.trunk i{position:absolute;inset:0;background:linear-gradient(#8a5d3b,#6c4a34);transform-origin:top;transform:scaleY(var(--p,1));border-radius:12px}
-.js .trunk i{transform:scaleY(var(--p,0))}
-.ms{position:relative;display:grid;grid-template-columns:1fr 1fr;gap:96px;margin-bottom:64px}
-.ms .card{grid-column:1;text-align:right;background:var(--paper);border-radius:var(--r);padding:28px 32px;border:1px solid var(--line);position:relative}
-.ms:nth-child(even) .card{grid-column:2;text-align:left}
-.ms .yr{font-family:var(--f-d);font-size:44px;color:var(--plum-2);line-height:1;font-weight:600;display:block;margin-bottom:8px}
-.ms .card h3{font-size:24px;margin-bottom:8px}
-.ms .card p{color:var(--muted)}
-.ms .card img{border-radius:12px;margin-top:16px;aspect-ratio:16/9;object-fit:cover;width:100%}
-.branch{position:absolute;left:50%;top:40px;width:96px;height:64px;overflow:visible}
-.ms:nth-child(odd) .branch{transform:translateX(-100%) scaleX(-1)}
-.branch path.br{fill:none;stroke:#7a5238;stroke-width:6;stroke-linecap:round;stroke-dasharray:120;stroke-dashoffset:0}
-.branch .bl,.branch .fruit{transform-box:fill-box;transform-origin:center}
-.js .ms .branch path.br{stroke-dashoffset:120;transition:stroke-dashoffset .6s}
-.js .ms .branch .bl,.js .ms .branch .fruit{scale:0;transition:scale .5s cubic-bezier(.3,1.8,.5,1) .4s}
-.js .ms .branch .fruit{transition-delay:.6s}
-.js .ms .card{opacity:0;translate:0 24px;transition:opacity .6s .2s,translate .6s .2s}
-.js .ms.on .branch path.br{stroke-dashoffset:0}
-.js .ms.on .branch .bl,.js .ms.on .branch .fruit{scale:1}
-.js .ms.on .card{opacity:1;translate:0 0}
-.crown{position:relative;width:360px;height:240px;margin:-16px auto 0;display:block;overflow:visible}
-.crown .c{transform-box:fill-box;transform-origin:center}
-.js .crown .c{scale:0;transition:scale .8s cubic-bezier(.3,1.5,.5,1) calc(var(--i)*.06s)}
-.js .crown.on .c{scale:1}
-.crown-cap{text-align:center;margin-top:8px}
-.crown-cap b{font-family:var(--f-d);font-size:56px;color:var(--plum);line-height:1;display:block;font-weight:600}
-.crown-cap span{color:var(--muted);font-weight:700;display:block;text-wrap:balance}
+/* kako smo rasli — album koji klizi vodoravno dok se skroluje */
+.story{padding-bottom:32px}
+.story-head{display:flex;justify-content:space-between;align-items:flex-end;gap:40px;margin-bottom:0}
+.story-head .sec-head{margin-bottom:0}
+.story-big{text-align:right;flex:none}
+.story-big b{display:block;font-family:var(--f-d);font-size:72px;line-height:1;color:var(--plum);font-weight:600}
+.story-big span{font-weight:700;color:var(--muted)}
+.story-pin{position:relative}
+.story-sticky{position:sticky;top:80px;height:calc(100vh - 80px);display:flex;align-items:center;overflow:hidden}
+.story-sticky>.wrap{width:100%}
+.story-track{display:flex;gap:24px;will-change:transform}
+.scard{flex:none;width:384px;min-height:464px;border-radius:28px;border:2px solid var(--plum);box-shadow:6px 6px 0 var(--plum);padding:32px;display:flex;flex-direction:column;gap:12px;background:var(--c);transition:rotate .5s cubic-bezier(.3,1.5,.5,1)}
+.scard:nth-child(odd){rotate:-1deg}.scard:nth-child(even){rotate:1deg}
+.scard:hover{rotate:0deg}
+.scard .yr{font-family:var(--f-d);font-size:72px;line-height:1;color:var(--plum);font-weight:600;letter-spacing:-.02em}
+.scard .yt{display:inline-flex;align-self:flex-start;background:var(--paper);border:2px solid var(--plum);border-radius:999px;padding:4px 12px;font-weight:800;font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--plum)}
+.scard h3{font-size:28px}
+.scard p{color:var(--ink);text-wrap:balance}
+.scard img{margin-top:auto;border-radius:16px;border:2px solid var(--plum);aspect-ratio:16/10;object-fit:cover;width:100%}
+.story-bar{position:relative;height:8px;border-radius:8px;background:var(--lilac-l);margin-top:48px}
+.story-bar i{position:absolute;inset:0;border-radius:8px;background:var(--plum-2);transform-origin:left;transform:scaleX(var(--p,0))}
+.story-hint{margin-top:16px;font-weight:700;color:var(--muted);font-size:16px}
 
 /* koraci */
 .steps{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;counter-reset:st;position:relative}
 .steps::before{content:"";position:absolute;left:12%;right:12%;top:40px;border-top:3px dashed var(--lilac);z-index:0}
 .step{position:relative;text-align:center;padding:0 8px}
 .step .n{width:80px;height:80px;border-radius:50%;margin:0 auto 24px;display:grid;place-items:center;background:var(--paper);border:3px solid var(--plum-2);font-family:var(--f-d);font-size:32px;color:var(--plum);position:relative;z-index:1;transition:background .4s,color .4s,scale .4s}
-.step:hover .n{background:var(--plum);color:var(--honey);scale:1.08}
+.step:hover .n{background:var(--lilac);scale:1.08}
 .step h3{font-size:20px;margin-bottom:8px}
 .step p{color:var(--muted);font-size:16px}
 
 /* utisci */
-.reviews{background:var(--leaf-d);color:#e9f0e2;overflow:hidden}
-.reviews h2{color:var(--paper)}
-.reviews .eyebrow{color:var(--honey)}
-.reviews .lead{color:#c9d8bf}
+.reviews{background:var(--leaf-l);color:var(--ink);overflow:hidden}
+.reviews h2{color:var(--plum)}
+.reviews .eyebrow{color:var(--leaf)}
+.reviews .lead{color:var(--muted)}
 .rv-row{display:flex;width:max-content;gap:24px;animation:marq 70s linear infinite;padding:12px 0}
 .rv-row.rev{animation-direction:reverse;animation-duration:80s}
 .rv-rows:hover .rv-row{animation-play-state:paused}
 .rv-rows{display:grid;gap:12px;mask:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);-webkit-mask:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent)}
-.rv{width:400px;flex:none;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);border-radius:var(--r);padding:28px;display:flex;flex-direction:column;gap:16px}
-.rv .stars{color:var(--honey);letter-spacing:4px;font-size:16px}
-.rv p{font-family:var(--f-d);font-size:20px;line-height:1.5;color:var(--paper)}
-.rv cite{font-style:normal;font-weight:700;font-size:16px;color:#b9cbac;margin-top:auto}
-.rv-note{text-align:center;margin-top:40px;font-size:16px;color:#b9cbac}
+.rv{width:400px;flex:none;background:var(--paper);border:1px solid var(--line);border-radius:var(--r);padding:28px;display:flex;flex-direction:column;gap:16px}
+.rv .stars{color:var(--honey-d);letter-spacing:4px;font-size:16px}
+.rv p{font-family:var(--f-d);font-size:20px;line-height:1.5;color:var(--ink)}
+.rv cite{font-style:normal;font-weight:700;font-size:16px;color:var(--muted);margin-top:auto}
+.rv-note{text-align:center;margin-top:40px;font-size:16px;color:var(--muted)}
 
 /* galerija */
 .gal{columns:4 240px;column-gap:20px}
@@ -388,22 +365,22 @@ details .ans b{color:var(--ink)}
 
 /* obilazak/kontakt */
 .visit{padding-bottom:var(--sec)}
-.visit-card{background:var(--plum);border-radius:40px;color:#efe5f1;display:grid;grid-template-columns:1fr 1fr;overflow:hidden;position:relative}
+.visit-card{background:var(--sky);border-radius:40px;color:var(--ink);border:2px solid var(--plum);display:grid;grid-template-columns:1fr 1fr;overflow:hidden;position:relative}
 .visit-l{padding:64px}
-.visit-l h2{color:var(--paper);margin:16px 0 20px}
-.visit-l .eyebrow{color:var(--honey)}
-.visit-l .lead{color:#d9c8dd}
+.visit-l h2{color:var(--plum);margin:16px 0 20px}
+.visit-l .eyebrow{color:var(--plum-2)}
+.visit-l .lead{color:var(--muted)}
 .cinfo{list-style:none;padding:0;margin:40px 0;display:grid;gap:20px}
 .cinfo li{display:flex;gap:16px;align-items:flex-start}
-.cinfo i{width:44px;height:44px;border-radius:12px;flex:none;display:grid;place-items:center;background:rgba(255,255,255,.08);color:var(--honey)}
+.cinfo i{width:44px;height:44px;border-radius:12px;flex:none;display:grid;place-items:center;background:var(--paper);color:var(--plum)}
 .cinfo i svg{width:20px;height:20px}
-.cinfo small{display:block;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:#bfa9c5;font-weight:800}
-.cinfo a,.cinfo b{color:var(--paper);font-weight:700;font-size:20px;text-decoration:none}
+.cinfo small{display:block;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);font-weight:800}
+.cinfo a,.cinfo b{color:var(--plum);font-weight:700;font-size:20px;text-decoration:none}
 .cinfo a:hover{text-decoration:underline}
 .visit .btn{--bg:var(--honey);--fg:var(--plum)}
-.visit .btn.sec-b{--bg:transparent;--fg:var(--paper);border-color:rgba(255,255,255,.5)}
-.visit .btn.sec-b:hover{background:var(--paper);color:var(--plum)}
-.visit-r{background:var(--paper);color:var(--ink);padding:56px;margin:12px;border-radius:32px}
+.visit .btn.sec-b{--bg:var(--paper)}
+.visit .btn.sec-b:hover{background:var(--butter)}
+.visit-r{background:var(--paper);color:var(--ink);padding:56px;margin:12px;border-radius:32px;border:2px solid var(--plum)}
 .visit-r h3{font-size:28px;margin-bottom:8px}
 .visit-r>p{color:var(--muted);margin-bottom:24px}
 form label{display:block;font-weight:800;font-size:16px;color:var(--plum);margin-bottom:8px}
@@ -411,13 +388,13 @@ form .fld{margin-bottom:20px}
 form input,form select,form textarea{width:100%;font:600 16px var(--f-b);padding:16px;border-radius:12px;border:2px solid var(--line);background:var(--cream);color:var(--ink);transition:border-color .25s,background .25s}
 form input:focus,form select:focus,form textarea:focus{outline:0;border-color:var(--plum-2);background:#fff}
 form .row2{display:grid;grid-template-columns:1fr 1fr;gap:16px}
-form .btn{width:100%;justify-content:center;--bg:var(--plum);--fg:var(--cream)}
+form .btn{width:100%;justify-content:center;--bg:var(--lilac)}
 form .fine{font-size:16px;color:var(--muted);margin-top:16px;text-align:center}
 .map{margin-top:24px;border-radius:var(--r);overflow:hidden;border:1px solid var(--line);height:360px}
 .map iframe{width:100%;height:100%;border:0;display:block;filter:saturate(.8)}
 
 /* futer */
-footer{background:var(--ink);color:#c9bfcc;padding:64px 0 40px;font-size:16px}
+footer{background:#3d3150;color:#c9bfcc;padding:64px 0 40px;font-size:16px}
 .ft{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:48px}
 footer h4{color:var(--paper);font-family:var(--f-d);font-size:20px;margin:0 0 16px;font-weight:600}
 footer ul{list-style:none;padding:0;margin:0;display:grid;gap:8px}
@@ -437,12 +414,8 @@ footer a:hover{color:var(--honey)}
 @media (max-width:1100px){
   .nav ul{gap:20px}
   .bento{grid-template-columns:repeat(2,1fr)}
-  .prog-grid{grid-template-columns:repeat(2,1fr)}
-  .prog,.prog:nth-child(4){grid-column:span 1}
-  .prog:nth-child(5){grid-column:1/-1}
-  .prog:nth-child(5) .pimg{aspect-ratio:21/9}
+  .prog-grid{grid-template-columns:repeat(3,1fr)}
   .ft{grid-template-columns:1fr 1fr}
-  .f-pola{right:-2%}
   .f-price{left:-4%}
 }
 @media (max-width:960px){
@@ -454,18 +427,21 @@ footer a:hover{color:var(--honey)}
   .hero{padding:40px 0 112px}
   .hero-grid,.price-grid,.space-grid,.ppl-grid,.faq-grid,.visit-card{grid-template-columns:1fr}
   .hero-grid{gap:72px}
-  .hero-vis{max-width:400px}
+  .hero-vis{max-width:440px}
   .price-grid,.space-grid,.faq-grid,.ppl-grid{gap:56px}
   .faq-side{position:static}
+  .story-head{flex-direction:column;align-items:flex-start;gap:24px;margin-bottom:40px}
+  .story-big{text-align:left}
+  .story-sticky{position:static;height:auto;display:block;overflow:visible}
+  .story-track{overflow-x:auto;scroll-snap-type:x mandatory;margin:0 calc(var(--gut)*-1);padding:8px var(--gut) 16px;scrollbar-width:none}
+  .story-track::-webkit-scrollbar{display:none}
+  .scard{scroll-snap-align:start;scroll-margin-left:var(--gut)}
+  .story-bar{margin-top:24px}
+  .pfacts{grid-template-columns:repeat(3,1fr)}
   .blob .mini{right:0}
   .ppl-photos{grid-template-columns:repeat(2,1fr)}
   .steps{grid-template-columns:1fr 1fr;row-gap:48px}
   .steps::before{display:none}
-  .trunk{left:24px}
-  .ms{grid-template-columns:1fr;gap:0;padding-left:72px}
-  .ms .card,.ms:nth-child(even) .card{grid-column:1;text-align:left}
-  .branch,.ms:nth-child(odd) .branch{left:24px;transform:none;width:56px}
-  .crown{margin-left:-48px}
   .visit-l{padding:48px 32px}
   .visit-r{padding:40px 28px}
   .topbar .tb-l .addr{display:none}
@@ -480,16 +456,16 @@ footer a:hover{color:var(--honey)}
   .brand img{width:48px;height:48px}
   .brand b{font-size:20px}
   .hero-cta .btn{flex:1 1 100%;justify-content:center}
-  .f-price{left:-2%;bottom:8%;padding:12px 16px}
+  .f-price{left:0;bottom:2%;padding:12px 16px}
   .f-price .ic{display:none}
-  .f-pola{right:-2%}
-  .stamp{width:88px;height:88px;right:0;top:4%}
+  .stamp{width:88px;height:88px;left:-2%;top:-2%}
+  .chips{grid-template-columns:1fr 1fr;gap:8px}
+  .chips li{padding:8px 12px;font-size:12px;border-radius:12px}
   .stamp .core{inset:22px;font-size:16px}
   .bento{grid-template-columns:1fr}
   .tile.photo,.tile.wide{grid-column:auto}
   .tile.photo{min-height:360px}
   .prog-grid{grid-template-columns:1fr}
-  .prog:nth-child(5) .pimg{aspect-ratio:4/3}
   .receipt{padding:32px 24px 48px}
   .r-stamp{width:104px;height:104px;font-size:16px;right:4px;bottom:88px}
   .r-total b{font-size:32px}
@@ -509,26 +485,25 @@ footer a:hover{color:var(--honey)}
   .visit-r{margin:8px;padding:32px 20px;border-radius:24px}
   form .row2{grid-template-columns:1fr;gap:0}
   .ft{grid-template-columns:1fr}
-  .crown{width:260px;height:176px;margin:-16px auto 0}
-  .crown-cap b{font-size:40px}
   .eyebrow{letter-spacing:.08em}
-  .ms{padding-left:56px}
-  .trunk{left:16px}
-  .branch,.ms:nth-child(odd) .branch{left:16px;width:44px}
   .tradition{grid-template-columns:1fr;padding:24px 20px}
+  .scard{width:288px;min-height:0;padding:24px}
+  .scard .yr,.story-big b{font-size:56px}
+  .pfacts{grid-template-columns:1fr;gap:12px}
+  .pfact{display:flex;align-items:center;gap:16px;padding:16px 20px}
+  .pfact b{margin:0;min-width:48px}
   .mcta{display:flex;position:fixed;left:12px;right:12px;bottom:12px;z-index:60;gap:8px;translate:0 120%;transition:translate .4s}
   .mcta.show{translate:0 0}
-  .mcta a{flex:1;justify-content:center;min-height:52px;box-shadow:0 12px 24px -8px rgba(0,0,0,.35)}
+  .mcta a{flex:1;justify-content:center;min-height:52px}
   .mcta .btn.sec-b{background:var(--paper)}
   footer{padding-bottom:96px}
 }
 @media (prefers-reduced-motion:reduce){
   *,*::before,*::after{animation:none!important;transition:none!important}
-  .js [data-rv],.js .ms .card,.js .f-card,.js .stamp,.js .r-line,.js .bell,.js .wreath .lf{opacity:1!important;translate:0 0!important}
-  .js .wreath .lf,.js .wreath .fl-in,.js .crown .c,.js .ms .branch .bl,.js .ms .branch .fruit{scale:1!important}
-  .js .arch-photo .ph-col{clip-path:none!important}
-  .js .ms .branch path.br,.js .squig path{stroke-dashoffset:0!important}
-  .js .trunk i{transform:none!important}
+  .js [data-rv],.js .f-card,.js .stamp,.js .r-line{opacity:1!important;translate:0 0!important}
+  .js .pc{translate:0 0!important;rotate:0deg!important}
+  .js .deco{scale:1!important}
+  .js .squig path{stroke-dashoffset:0!important}
   .js .r-stamp{opacity:.92!important;scale:1!important}
 }
 </style>
@@ -595,44 +570,22 @@ footer a:hover{color:var(--honey)}
     </div>
 
     <div class="hero-vis" id="heroVis">
-      <div class="arch-photo">
-        <img class="ph-base" src="assets/vrtic-deca-dvoriste.webp" alt="" aria-hidden="true" width="800" height="600">
-        <img class="ph-col" src="assets/vrtic-deca-dvoriste.webp" alt="Deca se igraju u travnatom dvorištu vrtića Zvončica u Zemunu" width="800" height="600" fetchpriority="high">
-        <div class="glint"></div>
-      </div>
-      <svg class="wreath" viewBox="0 0 400 500" aria-hidden="true">
-        <g class="leaves"><g transform="translate(20.0 420.0) rotate(-24) scale(0.45)"><path class="lf" style="--d:0.22s" fill="#4f7d3a" d="M0 0C5-7 17-8 26-1C17 6 6 6 0 0Z"/></g><g transform="translate(20.0 420.0) rotate(-133) scale(0.44)"><path class="lf" style="--d:0.21s" fill="#5e8a43" d="M0 0C5-7 17-8 26-1C17 6 6 6 0 0Z"/></g><g transform="translate(20.0 412.5) rotate(-29) scale(0.47)"><path class="lf" style="--d:0.26s" fill="#3f6b34" d="M0 0C5-7 17-8 26-1C17 6 6 6 0 0Z"/></g><g transform="translate(20.0 412.5) rotate(-156) scale(0.62)"><path class="lf" style="--d:0.28s" fill="#264a26" d="M0 0C5-7 17-8 26-1C17 6 6 6 0 0Z"/></g><g transform="translate(20.0 405.0) rotate(-25) scale(0.53)"><path class="lf" style="--d:0.28s" fill="#264a26" d="M0 0C5-7 17-8 26-1C17 6 6 6 0 0Z"/></g><g transform="translate(20.0 405.0) rotate(-140) scale(0.66)"><path class="lf" style="--d:0.22s" fill="#3f6b34" d="M0 0C5-7 17-8 26-1C17 6 6 6 0 0Z"/></g><g transform="translate(20.0 397.5) rotate(-34) scale(0.58)"><path class="lf" style="--d:0.30s" fill="#2f5428" d="M0 0C5-7 17-8 26-1C17 6 6 6 0 0Z"/></g><g transform="translate(20.0 397.5) rotate(-138) scale(0.59)"><path class="lf" style="--d:0.30s" fill="#2f5428" d="M0 0C5-7 17-8 26-1C17 6 6 6 0 0Z"/></g><g transform="translate(20.0 390.0) rotate(-35) scale(0.64)"><path class="lf" style="--d:0.31s" fill="#264a26" d="M0 0C5-7 17-8 26-1C17 6 6 6 0 0Z"/></g><g transform="translate(20.0 390.0) rotate(-151) scale(0.81)"><path class="lf" style="--d:0.31s" fill="#5e8a43" d="M0 0C5-7 17-8 26-1C17 6 6 6 0 0Z"/></g><g transform="translate(20.0 382.5) rotate(-23) scale(0.75)"><path class="lf" style="--d:0.36s" fill="#6b9a4c" d="M0 0C5-7 17-8 26-1C17 6 6 6 0 0Z"/></g><g transform="translate(20.0 382.5) rotate(-146) scale(0.68)"><path class="lf" style="--d:0.28s" fill="#2f5428" d="M0 0C5-7 17-8 26-1C17 6 6 6 0 0Z"/></g><g transform="translate(20.0 375.0) rotate(-27) scale(0.99)"><path class="lf" style="--d:0.32s" fill="#264a26" d="M0 0C5-7 17-8 26-1C17 6 6 6 0 0Z"/></g><g transform="translate(20.0 375.0) rotate(-137) scale(0.92)"><path class="lf" style="--d:0.28s" fill="#3f6b34" d="M0 0C5-7 17-8 26-1C17 6 6 6 0 0Z"/></g><g transform="translate(20.0 367.5) rotate(-36) scale(0.94)"><path class="lf" style="--d:0.30s" fill="#2f5428" d="M0 0C5-7 17-8 26-1C17 6 6 6 0 0Z"/></g><g transform="translate(20.0 367.5) rotate(-147) scale(0.81)"><path class="lf" style="--d:0.33s" fill="#6b9a4c" d="M0 0C5-7 17-8 26-1C17 6 6 6 0 0Z"/></g><g transform="translate(20.0 360.0) rotate(-23) scale(1.00)"><path class="lf" style="--d:0.30s" fill="#2f5428" d="M0 0C5-7 17-8 26-1C17 6 6 6 0 0Z"/></g><g transform="translate(20.0 360.0) rotate(-153) scale(0.90)"><path class="lf" style="--d:0.40s" fill="#6b9a4c" d="M0 0C5-7 17-8 26-1C17 6 6 6 0 0Z"/></g><g transform="translate(20.0 352.5) rotate(-43) scale(1.01)"><path class="lf" style="--d:0.38s" fill="#4f7d3a" d="M0 0C5-7 17-8 26-1C17 6 6 6 0 0Z"/></g><g transform="translate(20.0 352.5) rotate(-141) scale(1.07)"><path class="lf" style="--d:0.38s" fill="#6b9a4c" d="M0 0C5-7 17-8 26-1C17 6 6 6 0 0Z"/></g><g transform="translate(20.0 345.0) rotate(-27) scale(0.92)"><path class="lf" style="--d:0.36s" fill="#2f5428" d="M0 0C5-7 17-8 26-1C17 6 6 6 0 0Z"/></g><g transform="translate(20.0 345.0) rotate(-139) scale(0.87)"><path class="lf" style="--d:0.37s" fill="#2f5428" d="M0 0C5-7 17-8 26-1C17 6 6 6 0 0Z"/></g><g transform="translate(20.0 337.5) rotate(-25) scale(1.08)"><path class="lf" style="--d:0.40s" fill="#3f6b34" d="M0 0C5-7 17-8 26-1C17 6 6 6 0 0Z"/></g><g transform="translate(20.0 337.5) rotate(-147) scale(0.98)"><path class="lf" style="--d:0.46s" fill="#264a26" d="M0 0C5-7 17-8 26-1C17 6 6 6 0 0Z"/></g><g transform="translate(20.0 330.0) rotate(-35) scale(0.96)"><path class="lf" style="--d:0.48s" fill="#264a26" d="M0 0C5-7 17-8 26-1C17 6 6 6 0 0Z"/></g><g transform="translate(20.0 330.0) rotate(-153) scale(0.99)"><path class="lf" style="--d:0.43s" fill="#2f5428" d="M0 0C5-7 17-8 26-1C17 6 6 6 0 0Z"/></g><g transform="translate(20.0 322.5) rotate(-31) scale(0.97)"><path class="lf" style="--d:0.45s" fill="#4f7d3a" d="M0 0C5-7 17-8 26-1C17 6 6 6 0 0Z"/></g><g transform="translate(20.0 322.5) rotate(-156) scale(1.06)"><path class="lf" style="--d:0.41s" fill="#264a26" d="M0 0C5-7 17-8 26-1C17 6 6 6 0 0Z"/></g><g transform="translate(20.0 315.0) rotate(-34) scale(0.79)"><path class="lf" style="--d:0.50s" fill="#5e8a43" d="M0 0C5-7 17-8 26-1C17 6 6 6 0 0Z"/></g><g transform="translate(20.0 315.0) rotate(-134) scale(0.93)"><path class="lf" style="--d:0.48s" fill="#264a26" d="M0 0C5-7 17-8 26-1C17 6 6 6 0 0Z"/></g><g transform="translate(20.0 307.5) rotate(-34) scale(0.86)"><path class="lf" style="--d:0.49s" fill="#264a26" d="M0 0C5-7 17-8 26-1C17 6 6 6 0 0Z"/></g><g transform="translate(20.0 307.5) rotate(-135) scale(1.03)"><path class="lf" style="--d:0.53s" fill="#4f7d3a" d="M0 0C5-7 17-8 26-1C17 6 6 6 0 0Z"/></g><g transform="translate(20.0 300.0) rotate(-44) scale(0.93)"><path class="lf" style="--d:0.50s" fill="#5e8a43" d="M0 0C5-7 17-8 26-1C17 6 6 6 0 0Z"/></g><g transform="translate(20.0 300.0) rotate(-152) scale(0.85)"><path class="lf" style="--d:0.48s" fill="#3f6b34" d="M0 0C5-7 17-8 26-1C17 6 6 6 0 0Z"/></g><g transform="translate(20.0 292.5) rotate(-32) scale(1.06)"><path class="lf" style="--d:0.51s" fill="#6b9a4c" d="M0 0C5-7 17-8 26-1C17 6 6 6 0 0Z"/></g><g transform="translate(20.0 292.5) rotate(-152) scale(0.80)"><path class="lf" style="--d:0.58s" fill="#5e8a43" d="M0 0C5-7 17-8 26-1C17 6 6 6 0 0Z"/></g><g transform="translate(20.0 285.0) rotate(-27) scale(0.94)"><path class="lf" style="--d:0.50s" fill="#6b9a4c" d="M0 0C5-7 17-8 26-1C17 6 6 6 0 0Z"/></g><g transform="translate(20.0 285.0) rotate(-147) scale(0.96)"><path class="lf" style="--d:0.53s" fill="#4f7d3a" d="M0 0C5-7 17-8 26-1C17 6 6 6 0 0Z"/></g><g transform="translate(20.0 277.5) rotate(-34) scale(0.90)"><path class="lf" style="--d:0.55s" fill="#4f7d3a" d="M0 0C5-7 17-8 26-1C17 6 6 6 0 0Z"/></g><g transform="translate(20.0 277.5) rotate(-150) scale(0.88)"><path class="lf" style="--d:0.62s" fill="#264a26" d="M0 0C5-7 17-8 26-1C17 6 6 6 0 0Z"/></g><g transform="translate(20.0 270.0) rotate(-24) scale(1.12)"><path class="lf" style="--d:0.53s" fill="#2f5428" d="M0 0C5-7 17-8 26-1C17 6 6 6 0 0Z"/></g><g transform="translate(20.0 270.0) rotate(-151) scale(0.77)"><path class="lf" style="--d:0.54s" fill="#2f5428" d="M0 0C5-7 17-8 26-1C17 6 6 6 0 0Z"/></g><g transform="translate(20.0 262.5) rotate(-37) scale(1.11)"><path class="lf" style="--d:0.60s" fill="#4f7d3a" d="M0 0C5-7 17-8 26-1C17 6 6 6 0 0Z"/></g><g transform="translate(20.0 262.5) rotate(-155) scale(0.95)"><path class="lf" style="--d:0.55s" fill="#4f7d3a" d="M0 0C5-7 17-8 26-1C17 6 6 6 0 0Z"/></g><g transform="translate(20.0 255.0) rotate(-41) scale(0.92)"><path class="lf" style="--d:0.56s" fill="#3f6b34" d="M0 0C5-7 17-8 26-1C17 6 6 6 0 0Z"/></g><g transform="translate(20.0 255.0) rotate(-136) scale(0.85)"><path class="lf" style="--d:0.57s" fill="#264a26" d="M0 0C5-7 17-8 26-1C17 6 6 6 0 0Z"/></g><g transform="translate(20.0 247.5) rotate(-23) scale(0.93)"><path class="lf" style="--d:0.63s" fill="#4f7d3a" d="M0 0C5-7 17-8 26-1C17 6 6 6 0 0Z"/></g><g transform="translate(20.0 247.5) rotate(-144) scale(1.00)"><path class="lf" style="--d:0.60s" fill="#3f6b34" d="M0 0C5-7 17-8 26-1C17 6 6 6 0 0Z"/></g><g transform="translate(20.0 240.0) rotate(-43) scale(0.81)"><path class="lf" style="--d:0.71s" fill="#3f6b34" d="M0 0C5-7 17-8 26-1C17 6 6 6 0 0Z"/></g><g transform="translate(20.0 240.0) rotate(-150) scale(0.96)"><path class="lf" style="--d:0.65s" fill="#2f5428" d="M0 0C5-7 17-8 26-1C17 6 6 6 0 0Z"/></g><g transform="translate(20.0 232.5) rotate(-23) scale(0.89)"><path class="lf" style="--d:0.62s" fill="#3f6b34" d="M0 0C5-7 17-8 26-1C17 6 6 6 0 0Z"/></g><g transform="translate(20.0 232.5) rotate(-145) scale(0.95)"><path class="lf" style="--d:0.64s" fill="#2f5428" d="M0 0C5-7 17-8 26-1C17 6 6 6 0 0Z"/></g><g transform="translate(20.0 225.0) rotate(-37) scale(1.01)"><path class="lf" style="--d:0.69s" fill="#6b9a4c" d="M0 0C5-7 17-8 26-1C17 6 6 6 0 0Z"/></g><g transform="translate(20.0 225.0) rotate(-150) scale(0.91)"><path class="lf" style="--d:0.66s" fill="#264a26" d="M0 0C5-7 17-8 26-1C17 6 6 6 0 0Z"/></g><g transform="translate(20.0 217.5) rotate(-30) scale(0.83)"><path class="lf" style="--d:0.67s" fill="#6b9a4c" d="M0 0C5-7 17-8 26-1C17 6 6 6 0 0Z"/></g><g transform="translate(20.0 217.5) rotate(-157) scale(1.14)"><path class="lf" style="--d:0.73s" fill="#2f5428" d="M0 0C5-7 17-8 26-1C17 6 6 6 0 0Z"/></g><g transform="translate(20.0 210.0) rotate(-45) scale(0.92)"><path class="lf" style="--d:0.77s" fill="#3f6b34" d="M0 0C5-7 17-8 26-1C17 6 6 6 0 0Z"/></g><g transform="translate(20.0 210.0) rotate(-143) scale(1.02)"><path class="lf" style="--d:0.75s" fill="#4f7d3a" d="M0 0C5-7 17-8 26-1C17 6 6 6 0 0Z"/></g><g transform="translate(20.0 202.5) rotate(-36) scale(0.82)"><path class="lf" style="--d:0.72s" fill="#4f7d3a" d="M0 0C5-7 17-8 26-1C17 6 6 6 0 0Z"/></g><g transform="translate(20.0 202.5) rotate(-149) scale(1.14)"><path class="lf" style="--d:0.69s" fill="#264a26" d="M0 0C5-7 17-8 26-1C17 6 6 6 0 0Z"/></g><g transform="translate(20.0 200.0) rotate(-47) scale(0.84)"><path class="lf" style="--d:0.75s" fill="#2f5428" d="M0 0C5-7 17-8 26-1C17 6 6 6 0 0Z"/></g><g transform="translate(20.0 200.0) rotate(-151) scale(0.95)"><path class="lf" style="--d:0.80s" fill="#2f5428" d="M0 0C5-7 17-8 26-1C17 6 6 6 0 0Z"/></g><g transform="translate(20.2 192.5) rotate(-35) scale(1.08)"><path class="lf" style="--d:0.73s" fill="#2f5428" d="M0 0C5-7 17-8 26-1C17 6 6 6 0 0Z"/></g><g transform="translate(20.2 192.5) rotate(-153) scale(0.87)"><path class="lf" style="--d:0.84s" fill="#2f5428" d="M0 0C5-7 17-8 26-1C17 6 6 6 0 0Z"/></g><g transform="translate(20.6 184.9) rotate(-23) scale(0.81)"><path class="lf" style="--d:0.81s" fill="#6b9a4c" d="M0 0C5-7 17-8 26-1C17 6 6 6 0 0Z"/></g><g transform="translate(20.6 184.9) rotate(-149) scale(1.04)"><path class="lf" style="--d:0.83s" fill="#5e8a43" d="M0 0C5-7 17-8 26-1C17 6 6 6 0 0Z"/></g><g transform="translate(21.4 177.4) rotate(-18) scale(0.77)"><path class="lf" style="--d:0.84s" fill="#6b9a4c" d="M0 0C5-7 17-8 26-1C17 6 6 6 0 0Z"/></g><g transform="translate(21.4 177.4) rotate(-128) scale(1.07)"><path class="lf" style="--d:0.85s" fill="#2f5428" d="M0 0C5-7 17-8 26-1C17 6 6 6 0 0Z"/></g><g transform="translate(22.5 170.0) rotate(-18) scale(1.08)"><path class="lf" style="--d:0.85s" fill="#3f6b34" d="M0 0C5-7 17-8 26-1C17 6 6 6 0 0Z"/></g><g transform="translate(22.5 170.0) rotate(-132) scale(1.02)"><path class="lf" style="--d:0.79s" fill="#6b9a4c" d="M0 0C5-7 17-8 26-1C17 6 6 6 0 0Z"/></g><g transform="translate(23.9 162.6) rotate(-26) scale(1.00)"><path class="lf" style="--d:0.85s" fill="#3f6b34" d="M0 0C5-7 17-8 26-1C17 6 6 6 0 0Z"/></g><g transform="translate(23.9 162.6) rotate(-129) scale(0.76)"><path class="lf" style="--d:0.86s" fill="#264a26" d="M0 0C5-7 17-8 26-1C17 6 6 6 0 0Z"/></g><g transform="translate(25.7 155.2) rotate(-10) scale(1.07)"><path class="lf" style="--d:0.92s" fill="#6b9a4c" d="M0 0C5-7 17-8 26-1C17 6 6 6 0 0Z"/></g><g transform="translate(25.7 155.2) rotate(-125) scale(0.96)"><path class="lf" style="--d:0.85s" fill="#6b9a4c" d="M0 0C5-7 17-8 26-1C17 6 6 6 0 0Z"/></g><g transform="translate(27.7 148.0) rotate(-12) scale(0.86)"><path class="lf" style="--d:0.86s" fill="#6b9a4c" d="M0 0C5-7 17-8 26-1C17 6 6 6 0 0Z"/></g><g transform="translate(27.7 148.0) rotate(-138) scale(0.93)"><path class="lf" style="--d:0.94s" fill="#5e8a43" d="M0 0C5-7 17-8 26-1C17 6 6 6 0 0Z"/></g><g transform="translate(30.0 140.8) rotate(-12) scale(0.77)"><path class="lf" style="--d:0.86s" fill="#6b9a4c" d="M0 0C5-7 17-8 26-1C17 6 6 6 0 0Z"/></g><g transform="translate(30.0 140.8) rotate(-121) scale(0.85)"><path class="lf" style="--d:0.93s" fill="#6b9a4c" d="M0 0C5-7 17-8 26-1C17 6 6 6 0 0Z"/></g><g transform="translate(32.6 133.7) rotate(-19) scale(0.94)"><path class="lf" style="--d:0.95s" fill="#5e8a43" d="M0 0C5-7 17-8 26-1C17 6 6 6 0 0Z"/></g><g transform="translate(32.6 133.7) rotate(-118) scale(1.02)"><path class="lf" style="--d:0.91s" fill="#4f7d3a" d="M0 0C5-7 17-8 26-1C17 6 6 6 0 0Z"/></g><g transform="translate(35.6 126.8) rotate(-18) scale(1.06)"><path class="lf" style="--d:1.01s" fill="#264a26" d="M0 0C5-7 17-8 26-1C17 6 6 6 0 0Z"/></g><g transform="translate(35.6 126.8) rotate(-131) scale(0.76)"><path class="lf" style="--d:0.95s" fill="#5e8a43" d="M0 0C5-7 17-8 26-1C17 6 6 6 0 0Z"/></g><g transform="translate(38.8 120.0) rotate(-16) scale(1.15)"><path class="lf" style="--d:1.02s" fill="#5e8a43" d="M0 0C5-7 17-8 26-1C17 6 6 6 0 0Z"/></g><g transform="translate(38.8 120.0) rotate(-113) scale(0.98)"><path class="lf" style="--d:0.94s" fill="#2f5428" d="M0 0C5-7 17-8 26-1C17 6 6 6 0 0Z"/></g><g transform="translate(42.3 113.3) rotate(-6) scale(0.99)"><path class="lf" style="--d:1.03s" fill="#6b9a4c" d="M0 0C5-7 17-8 26-1C17 6 6 6 0 0Z"/></g><g transform="translate(42.3 113.3) rotate(-119) scale(0.84)"><path class="lf" style="--d:0.95s" fill="#5e8a43" d="M0 0C5-7 17-8 26-1C17 6 6 6 0 0Z"/></g><g transform="translate(46.0 106.8) rotate(-9) scale(1.02)"><path class="lf" style="--d:0.96s" fill="#5e8a43" d="M0 0C5-7 17-8 26-1C17 6 6 6 0 0Z"/></g><g transform="translate(46.0 106.8) rotate(-126) scale(0.88)"><path class="lf" style="--d:1.04s" fill="#4f7d3a" d="M0 0C5-7 17-8 26-1C17 6 6 6 0 0Z"/></g><g transform="translate(50.1 100.4) rotate(4) scale(0.80)"><path class="lf" style="--d:1.07s" fill="#2f5428" d="M0 0C5-7 17-8 26-1C17 6 6 6 0 0Z"/></g><g transform="translate(50.1 100.4) rotate(-114) scale(0.90)"><path class="lf" style="--d:1.07s" fill="#5e8a43" d="M0 0C5-7 17-8 26-1C17 6 6 6 0 0Z"/></g><g transform="translate(54.4 94.2) rotate(10) scale(1.12)"><path class="lf" style="--d:1.02s" fill="#4f7d3a" d="M0 0C5-7 17-8 26-1C17 6 6 6 0 0Z"/></g><g transform="translate(54.4 94.2) rotate(-99) scale(1.01)"><path class="lf" style="--d:1.01s" fill="#6b9a4c" d="M0 0C5-7 17-8 26-1C17 6 6 6 0 0Z"/></g><g transform="translate(58.9 88.2) rotate(10) scale(0.95)"><path class="lf" style="--d:1.10s" fill="#2f5428" d="M0 0C5-7 17-8 26-1C17 6 6 6 0 0Z"/></g><g transform="translate(58.9 88.2) rotate(-109) scale(0.76)"><path class="lf" style="--d:1.11s" fill="#6b9a4c" d="M0 0C5-7 17-8 26-1C17 6 6 6 0 0Z"/></g><g transform="translate(63.7 82.4) rotate(-5) scale(0.83)"><path class="lf" style="--d:1.11s" fill="#3f6b34" d="M0 0C5-7 17-8 26-1C17 6 6 6 0 0Z"/></g><g transform="translate(63.7 82.4) rotate(-95) scale(1.05)"><path class="lf" style="--d:1.08s" fill="#6b9a4c" d="M0 0C5-7 17-8 26-1C17 6 6 6 0 0Z"/></g><g transform="translate(68.8 76.8) rotate(8) scale(0.97)"><path class="lf" style="--d:1.08s" fill="#2f5428" d="M0 0C5-7 17-8 26-1C17 6 6 6 0 0Z"/></g><g transform="translate(68.8 76.8) rotate(-108) scale(1.05)"><path class="lf" style="--d:1.12s" fill="#6b9a4c" d="M0 0C5-7 17-8 26-1C17 6 6 6 0 0Z"/></g><g transform="translate(74.1 71.4) rotate(1) scale(0.97)"><path class="lf" style="--d:1.13s" fill="#5e8a43" d="M0 0C5-7 17-8 26-1C17 6 6 6 0 0Z"/></g><g transform="translate(74.1 71.4) rotate(-98) scale(0.95)"><path class="lf" style="--d:1.11s" fill="#5e8a43" d="M0 0C5-7 17-8 26-1C17 6 6 6 0 0Z"/></g><g transform="translate(79.6 66.2) rotate(4) scale(1.05)"><path class="lf" style="--d:1.10s" fill="#5e8a43" d="M0 0C5-7 17-8 26-1C17 6 6 6 0 0Z"/></g><g transform="translate(79.6 66.2) rotate(-101) scale(0.89)"><path class="lf" style="--d:1.12s" fill="#3f6b34" d="M0 0C5-7 17-8 26-1C17 6 6 6 0 0Z"/></g><g transform="translate(85.3 61.3) rotate(21) scale(0.83)"><path class="lf" style="--d:1.14s" fill="#3f6b34" d="M0 0C5-7 17-8 26-1C17 6 6 6 0 0Z"/></g><g transform="translate(85.3 61.3) rotate(-100) scale(0.96)"><path class="lf" style="--d:1.18s" fill="#5e8a43" d="M0 0C5-7 17-8 26-1C17 6 6 6 0 0Z"/></g><g transform="translate(91.2 56.6) rotate(9) scale(0.98)"><path class="lf" style="--d:1.17s" fill="#4f7d3a" d="M0 0C5-7 17-8 26-1C17 6 6 6 0 0Z"/></g><g transform="translate(91.2 56.6) rotate(-102) scale(1.10)"><path class="lf" style="--d:1.22s" fill="#2f5428" d="M0 0C5-7 17-8 26-1C17 6 6 6 0 0Z"/></g><g transform="translate(97.3 52.2) rotate(31) scale(1.01)"><path class="lf" style="--d:1.23s" fill="#5e8a43" d="M0 0C5-7 17-8 26-1C17 6 6 6 0 0Z"/></g><g transform="translate(97.3 52.2) rotate(-92) scale(0.76)"><path class="lf" style="--d:1.22s" fill="#3f6b34" d="M0 0C5-7 17-8 26-1C17 6 6 6 0 0Z"/></g><g transform="translate(103.6 48.0) rotate(11) scale(1.14)"><path class="lf" style="--d:1.20s" fill="#5e8a43" d="M0 0C5-7 17-8 26-1C17 6 6 6 0 0Z"/></g><g transform="translate(103.6 48.0) rotate(-76) scale(1.08)"><path class="lf" style="--d:1.18s" fill="#5e8a43" d="M0 0C5-7 17-8 26-1C17 6 6 6 0 0Z"/></g><g transform="translate(110.0 44.1) rotate(36) scale(0.81)"><path class="lf" style="--d:1.18s" fill="#264a26" d="M0 0C5-7 17-8 26-1C17 6 6 6 0 0Z"/></g><g transform="translate(110.0 44.1) rotate(-95) scale(1.03)"><path class="lf" style="--d:1.26s" fill="#5e8a43" d="M0 0C5-7 17-8 26-1C17 6 6 6 0 0Z"/></g><g transform="translate(116.6 40.5) rotate(37) scale(0.80)"><path class="lf" style="--d:1.26s" fill="#264a26" d="M0 0C5-7 17-8 26-1C17 6 6 6 0 0Z"/></g><g transform="translate(116.6 40.5) rotate(-82) scale(0.80)"><path class="lf" style="--d:1.24s" fill="#4f7d3a" d="M0 0C5-7 17-8 26-1C17 6 6 6 0 0Z"/></g><g transform="translate(123.4 37.1) rotate(30) scale(0.79)"><path class="lf" style="--d:1.28s" fill="#4f7d3a" d="M0 0C5-7 17-8 26-1C17 6 6 6 0 0Z"/></g><g transform="translate(123.4 37.1) rotate(-92) scale(0.84)"><path class="lf" style="--d:1.27s" fill="#264a26" d="M0 0C5-7 17-8 26-1C17 6 6 6 0 0Z"/></g><g transform="translate(130.2 34.1) rotate(36) scale(0.86)"><path class="lf" style="--d:1.33s" fill="#4f7d3a" d="M0 0C5-7 17-8 26-1C17 6 6 6 0 0Z"/></g><g transform="translate(130.2 34.1) rotate(-89) scale(0.84)"><path class="lf" style="--d:1.27s" fill="#2f5428" d="M0 0C5-7 17-8 26-1C17 6 6 6 0 0Z"/></g><g transform="translate(137.3 31.3) rotate(35) scale(0.77)"><path class="lf" style="--d:1.32s" fill="#2f5428" d="M0 0C5-7 17-8 26-1C17 6 6 6 0 0Z"/></g><g transform="translate(137.3 31.3) rotate(-77) scale(0.85)"><path class="lf" style="--d:1.29s" fill="#6b9a4c" d="M0 0C5-7 17-8 26-1C17 6 6 6 0 0Z"/></g><g transform="translate(144.4 28.8) rotate(35) scale(1.03)"><path class="lf" style="--d:1.34s" fill="#6b9a4c" d="M0 0C5-7 17-8 26-1C17 6 6 6 0 0Z"/></g><g transform="translate(144.4 28.8) rotate(-65) scale(1.07)"><path class="lf" style="--d:1.27s" fill="#6b9a4c" d="M0 0C5-7 17-8 26-1C17 6 6 6 0 0Z"/></g><g transform="translate(151.6 26.6) rotate(33) scale(0.83)"><path class="lf" style="--d:1.31s" fill="#2f5428" d="M0 0C5-7 17-8 26-1C17 6 6 6 0 0Z"/></g><g transform="translate(151.6 26.6) rotate(-71) scale(0.87)"><path class="lf" style="--d:1.30s" fill="#264a26" d="M0 0C5-7 17-8 26-1C17 6 6 6 0 0Z"/></g><g transform="translate(158.9 24.8) rotate(31) scale(0.92)"><path class="lf" style="--d:1.37s" fill="#6b9a4c" d="M0 0C5-7 17-8 26-1C17 6 6 6 0 0Z"/></g><g transform="translate(158.9 24.8) rotate(-57) scale(0.77)"><path class="lf" style="--d:1.32s" fill="#3f6b34" d="M0 0C5-7 17-8 26-1C17 6 6 6 0 0Z"/></g><g transform="translate(166.3 23.2) rotate(43) scale(0.77)"><path class="lf" style="--d:1.40s" fill="#5e8a43" d="M0 0C5-7 17-8 26-1C17 6 6 6 0 0Z"/></g><g transform="translate(166.3 23.2) rotate(-55) scale(0.80)"><path class="lf" style="--d:1.36s" fill="#3f6b34" d="M0 0C5-7 17-8 26-1C17 6 6 6 0 0Z"/></g><g transform="translate(173.7 21.9) rotate(46) scale(1.12)"><path class="lf" style="--d:1.37s" fill="#6b9a4c" d="M0 0C5-7 17-8 26-1C17 6 6 6 0 0Z"/></g><g transform="translate(173.7 21.9) rotate(-65) scale(1.09)"><path class="lf" style="--d:1.35s" fill="#4f7d3a" d="M0 0C5-7 17-8 26-1C17 6 6 6 0 0Z"/></g><g transform="translate(181.2 21.0) rotate(60) scale(0.78)"><path class="lf" style="--d:1.37s" fill="#5e8a43" d="M0 0C5-7 17-8 26-1C17 6 6 6 0 0Z"/></g><g transform="translate(181.2 21.0) rotate(-55) scale(0.83)"><path class="lf" style="--d:1.39s" fill="#4f7d3a" d="M0 0C5-7 17-8 26-1C17 6 6 6 0 0Z"/></g><g transform="translate(188.7 20.4) rotate(51) scale(0.79)"><path class="lf" style="--d:1.42s" fill="#6b9a4c" d="M0 0C5-7 17-8 26-1C17 6 6 6 0 0Z"/></g><g transform="translate(188.7 20.4) rotate(-53) scale(0.83)"><path class="lf" style="--d:1.43s" fill="#4f7d3a" d="M0 0C5-7 17-8 26-1C17 6 6 6 0 0Z"/></g><g transform="translate(196.2 20.0) rotate(60) scale(0.85)"><path class="lf" style="--d:1.40s" fill="#6b9a4c" d="M0 0C5-7 17-8 26-1C17 6 6 6 0 0Z"/></g><g transform="translate(196.2 20.0) rotate(-62) scale(0.78)"><path class="lf" style="--d:1.48s" fill="#3f6b34" d="M0 0C5-7 17-8 26-1C17 6 6 6 0 0Z"/></g><g transform="translate(203.8 20.0) rotate(52) scale(0.89)"><path class="lf" style="--d:1.49s" fill="#4f7d3a" d="M0 0C5-7 17-8 26-1C17 6 6 6 0 0Z"/></g><g transform="translate(203.8 20.0) rotate(-58) scale(1.05)"><path class="lf" style="--d:1.41s" fill="#6b9a4c" d="M0 0C5-7 17-8 26-1C17 6 6 6 0 0Z"/></g><g transform="translate(211.3 20.4) rotate(69) scale(1.05)"><path class="lf" style="--d:1.36s" fill="#6b9a4c" d="M0 0C5-7 17-8 26-1C17 6 6 6 0 0Z"/></g><g transform="translate(211.3 20.4) rotate(-40) scale(0.79)"><path class="lf" style="--d:1.47s" fill="#6b9a4c" d="M0 0C5-7 17-8 26-1C17 6 6 6 0 0Z"/></g><g transform="translate(218.8 21.0) rotate(69) scale(0.85)"><path class="lf" style="--d:1.35s" fill="#5e8a43" d="M0 0C5-7 17-8 26-1C17 6 6 6 0 0Z"/></g><g transform="translate(218.8 21.0) rotate(-54) scale(0.75)"><path class="lf" style="--d:1.42s" fill="#6b9a4c" d="M0 0C5-7 17-8 26-1C17 6 6 6 0 0Z"/></g><g transform="translate(226.3 21.9) rotate(62) scale(0.84)"><path class="lf" style="--d:1.41s" fill="#4f7d3a" d="M0 0C5-7 17-8 26-1C17 6 6 6 0 0Z"/></g><g transform="translate(226.3 21.9) rotate(-41) scale(0.95)"><path class="lf" style="--d:1.35s" fill="#5e8a43" d="M0 0C5-7 17-8 26-1C17 6 6 6 0 0Z"/></g><g transform="translate(233.7 23.2) rotate(67) scale(0.76)"><path class="lf" style="--d:1.32s" fill="#264a26" d="M0 0C5-7 17-8 26-1C17 6 6 6 0 0Z"/></g><g transform="translate(233.7 23.2) rotate(-50) scale(0.79)"><path class="lf" style="--d:1.31s" fill="#3f6b34" d="M0 0C5-7 17-8 26-1C17 6 6 6 0 0Z"/></g><g transform="translate(241.1 24.8) rotate(80) scale(0.95)"><path class="lf" style="--d:1.30s" fill="#6b9a4c" d="M0 0C5-7 17-8 26-1C17 6 6 6 0 0Z"/></g><g transform="translate(241.1 24.8) rotate(-48) scale(0.93)"><path class="lf" style="--d:1.34s" fill="#6b9a4c" d="M0 0C5-7 17-8 26-1C17 6 6 6 0 0Z"/></g><g transform="translate(248.4 26.6) rotate(66) scale(1.05)"><path class="lf" style="--d:1.33s" fill="#4f7d3a" d="M0 0C5-7 17-8 26-1C17 6 6 6 0 0Z"/></g><g transform="translate(248.4 26.6) rotate(-41) scale(1.05)"><path class="lf" style="--d:1.28s" fill="#2f5428" d="M0 0C5-7 17-8 26-1C17 6 6 6 0 0Z"/></g><g transform="translate(255.6 28.8) rotate(66) scale(0.86)"><path class="lf" style="--d:1.25s" fill="#264a26" d="M0 0C5-7 17-8 26-1C17 6 6 6 0 0Z"/></g><g transform="translate(255.6 28.8) rotate(-43) scale(0.85)"><path class="lf" style="--d:1.34s" fill="#264a26" d="M0 0C5-7 17-8 26-1C17 6 6 6 0 0Z"/></g><g transform="translate(262.7 31.3) rotate(64) scale(1.15)"><path class="lf" style="--d:1.33s" fill="#3f6b34" d="M0 0C5-7 17-8 26-1C17 6 6 6 0 0Z"/></g><g transform="translate(262.7 31.3) rotate(-46) scale(0.93)"><path class="lf" style="--d:1.26s" fill="#4f7d3a" d="M0 0C5-7 17-8 26-1C17 6 6 6 0 0Z"/></g><g transform="translate(269.8 34.1) rotate(70) scale(0.83)"><path class="lf" style="--d:1.21s" fill="#264a26" d="M0 0C5-7 17-8 26-1C17 6 6 6 0 0Z"/></g><g transform="translate(269.8 34.1) rotate(-38) scale(0.82)"><path class="lf" style="--d:1.30s" fill="#264a26" d="M0 0C5-7 17-8 26-1C17 6 6 6 0 0Z"/></g><g transform="translate(276.6 37.1) rotate(85) scale(0.79)"><path class="lf" style="--d:1.23s" fill="#264a26" d="M0 0C5-7 17-8 26-1C17 6 6 6 0 0Z"/></g><g transform="translate(276.6 37.1) rotate(-37) scale(0.89)"><path class="lf" style="--d:1.22s" fill="#3f6b34" d="M0 0C5-7 17-8 26-1C17 6 6 6 0 0Z"/></g><g transform="translate(283.4 40.5) rotate(90) scale(1.01)"><path class="lf" style="--d:1.27s" fill="#2f5428" d="M0 0C5-7 17-8 26-1C17 6 6 6 0 0Z"/></g><g transform="translate(283.4 40.5) rotate(-32) scale(0.90)"><path class="lf" style="--d:1.19s" fill="#264a26" d="M0 0C5-7 17-8 26-1C17 6 6 6 0 0Z"/></g><g transform="translate(290.0 44.1) rotate(83) scale(0.97)"><path class="lf" style="--d:1.25s" fill="#3f6b34" d="M0 0C5-7 17-8 26-1C17 6 6 6 0 0Z"/></g><g transform="translate(290.0 44.1) rotate(-35) scale(0.81)"><path class="lf" style="--d:1.17s" fill="#264a26" d="M0 0C5-7 17-8 26-1C17 6 6 6 0 0Z"/></g><g transform="translate(296.4 48.0) rotate(91) scale(0.91)"><path class="lf" style="--d:1.18s" fill="#4f7d3a" d="M0 0C5-7 17-8 26-1C17 6 6 6 0 0Z"/></g><g transform="translate(296.4 48.0) rotate(-25) scale(1.05)"><path class="lf" style="--d:1.13s" fill="#4f7d3a" d="M0 0C5-7 17-8 26-1C17 6 6 6 0 0Z"/></g><g transform="translate(302.7 52.2) rotate(83) scale(1.07)"><path class="lf" style="--d:1.20s" fill="#6b9a4c" d="M0 0C5-7 17-8 26-1C17 6 6 6 0 0Z"/></g><g transform="translate(302.7 52.2) rotate(-22) scale(0.75)"><path class="lf" style="--d:1.21s" fill="#2f5428" d="M0 0C5-7 17-8 26-1C17 6 6 6 0 0Z"/></g><g transform="translate(308.8 56.6) rotate(99) scale(1.10)"><path class="lf" style="--d:1.11s" fill="#5e8a43" d="M0 0C5-7 17-8 26-1C17 6 6 6 0 0Z"/></g><g transform="translate(308.8 56.6) rotate(-28) scale(0.81)"><path class="lf" style="--d:1.17s" fill="#5e8a43" d="M0 0C5-7 17-8 26-1C17 6 6 6 0 0Z"/></g><g transform="translate(314.7 61.3) rotate(91) scale(0.95)"><path class="lf" style="--d:1.10s" fill="#2f5428" d="M0 0C5-7 17-8 26-1C17 6 6 6 0 0Z"/></g><g transform="translate(314.7 61.3) rotate(-16) scale(0.78)"><path class="lf" style="--d:1.17s" fill="#5e8a43" d="M0 0C5-7 17-8 26-1C17 6 6 6 0 0Z"/></g><g transform="translate(320.4 66.2) rotate(105) scale(0.83)"><path class="lf" style="--d:1.06s" fill="#2f5428" d="M0 0C5-7 17-8 26-1C17 6 6 6 0 0Z"/></g><g transform="translate(320.4 66.2) rotate(-3) scale(0.88)"><path class="lf" style="--d:1.10s" fill="#264a26" d="M0 0C5-7 17-8 26-1C17 6 6 6 0 0Z"/></g><g transform="translate(325.9 71.4) rotate(103) scale(1.00)"><path class="lf" style="--d:1.14s" fill="#2f5428" d="M0 0C5-7 17-8 26-1C17 6 6 6 0 0Z"/></g><g transform="translate(325.9 71.4) rotate(-3) scale(1.00)"><path class="lf" style="--d:1.06s" fill="#2f5428" d="M0 0C5-7 17-8 26-1C17 6 6 6 0 0Z"/></g><g transform="translate(331.2 76.8) rotate(94) scale(0.91)"><path class="lf" style="--d:1.06s" fill="#264a26" d="M0 0C5-7 17-8 26-1C17 6 6 6 0 0Z"/></g><g transform="translate(331.2 76.8) rotate(-19) scale(1.14)"><path class="lf" style="--d:1.09s" fill="#2f5428" d="M0 0C5-7 17-8 26-1C17 6 6 6 0 0Z"/></g><g transform="translate(336.3 82.4) rotate(95) scale(0.77)"><path class="lf" style="--d:1.07s" fill="#4f7d3a" d="M0 0C5-7 17-8 26-1C17 6 6 6 0 0Z"/></g><g transform="translate(336.3 82.4) rotate(-2) scale(1.00)"><path class="lf" style="--d:1.04s" fill="#4f7d3a" d="M0 0C5-7 17-8 26-1C17 6 6 6 0 0Z"/></g><g transform="translate(341.1 88.2) rotate(105) scale(0.91)"><path class="lf" style="--d:1.04s" fill="#4f7d3a" d="M0 0C5-7 17-8 26-1C17 6 6 6 0 0Z"/></g><g transform="translate(341.1 88.2) rotate(-4) scale(1.00)"><path class="lf" style="--d:1.04s" fill="#5e8a43" d="M0 0C5-7 17-8 26-1C17 6 6 6 0 0Z"/></g><g transform="translate(345.6 94.2) rotate(116) scale(1.08)"><path class="lf" style="--d:1.01s" fill="#2f5428" d="M0 0C5-7 17-8 26-1C17 6 6 6 0 0Z"/></g><g transform="translate(345.6 94.2) rotate(-11) scale(0.89)"><path class="lf" style="--d:1.02s" fill="#4f7d3a" d="M0 0C5-7 17-8 26-1C17 6 6 6 0 0Z"/></g><g transform="translate(349.9 100.4) rotate(103) scale(0.77)"><path class="lf" style="--d:1.06s" fill="#6b9a4c" d="M0 0C5-7 17-8 26-1C17 6 6 6 0 0Z"/></g><g transform="translate(349.9 100.4) rotate(-9) scale(1.04)"><path class="lf" style="--d:1.01s" fill="#3f6b34" d="M0 0C5-7 17-8 26-1C17 6 6 6 0 0Z"/></g><g transform="translate(354.0 106.8) rotate(102) scale(1.13)"><path class="lf" style="--d:0.94s" fill="#2f5428" d="M0 0C5-7 17-8 26-1C17 6 6 6 0 0Z"/></g><g transform="translate(354.0 106.8) rotate(-4) scale(1.03)"><path class="lf" style="--d:1.05s" fill="#3f6b34" d="M0 0C5-7 17-8 26-1C17 6 6 6 0 0Z"/></g><g transform="translate(357.7 113.3) rotate(121) scale(1.13)"><path class="lf" style="--d:1.00s" fill="#2f5428" d="M0 0C5-7 17-8 26-1C17 6 6 6 0 0Z"/></g><g transform="translate(357.7 113.3) rotate(12) scale(1.08)"><path class="lf" style="--d:0.93s" fill="#264a26" d="M0 0C5-7 17-8 26-1C17 6 6 6 0 0Z"/></g><g transform="translate(361.2 120.0) rotate(110) scale(0.86)"><path class="lf" style="--d:0.95s" fill="#5e8a43" d="M0 0C5-7 17-8 26-1C17 6 6 6 0 0Z"/></g><g transform="translate(361.2 120.0) rotate(11) scale(0.83)"><path class="lf" style="--d:0.92s" fill="#4f7d3a" d="M0 0C5-7 17-8 26-1C17 6 6 6 0 0Z"/></g><g transform="translate(364.4 126.8) rotate(113) scale(0.83)"><path class="lf" style="--d:0.98s" fill="#5e8a43" d="M0 0C5-7 17-8 26-1C17 6 6 6 0 0Z"/></g><g transform="translate(364.4 126.8) rotate(18) scale(1.11)"><path class="lf" style="--d:0.90s" fill="#2f5428" d="M0 0C5-7 17-8 26-1C17 6 6 6 0 0Z"/></g><g transform="translate(367.4 133.7) rotate(135) scale(0.77)"><path class="lf" style="--d:0.91s" fill="#4f7d3a" d="M0 0C5-7 17-8 26-1C17 6 6 6 0 0Z"/></g><g transform="translate(367.4 133.7) rotate(7) scale(1.03)"><path class="lf" style="--d:0.92s" fill="#3f6b34" d="M0 0C5-7 17-8 26-1C17 6 6 6 0 0Z"/></g><g transform="translate(370.0 140.8) rotate(120) scale(1.05)"><path class="lf" style="--d:0.95s" fill="#4f7d3a" d="M0 0C5-7 17-8 26-1C17 6 6 6 0 0Z"/></g><g transform="translate(370.0 140.8) rotate(14) scale(0.89)"><path class="lf" style="--d:0.86s" fill="#3f6b34" d="M0 0C5-7 17-8 26-1C17 6 6 6 0 0Z"/></g><g transform="translate(372.3 148.0) rotate(122) scale(0.77)"><path class="lf" style="--d:0.89s" fill="#264a26" d="M0 0C5-7 17-8 26-1C17 6 6 6 0 0Z"/></g><g transform="translate(372.3 148.0) rotate(28) scale(0.98)"><path class="lf" style="--d:0.90s" fill="#6b9a4c" d="M0 0C5-7 17-8 26-1C17 6 6 6 0 0Z"/></g><g transform="translate(374.3 155.2) rotate(133) scale(0.84)"><path class="lf" style="--d:0.85s" fill="#4f7d3a" d="M0 0C5-7 17-8 26-1C17 6 6 6 0 0Z"/></g><g transform="translate(374.3 155.2) rotate(20) scale(1.11)"><path class="lf" style="--d:0.87s" fill="#2f5428" d="M0 0C5-7 17-8 26-1C17 6 6 6 0 0Z"/></g><g transform="translate(376.1 162.6) rotate(130) scale(0.77)"><path class="lf" style="--d:0.79s" fill="#264a26" d="M0 0C5-7 17-8 26-1C17 6 6 6 0 0Z"/></g><g transform="translate(376.1 162.6) rotate(18) scale(0.84)"><path class="lf" style="--d:0.80s" fill="#264a26" d="M0 0C5-7 17-8 26-1C17 6 6 6 0 0Z"/></g><g transform="translate(377.5 170.0) rotate(127) scale(1.08)"><path class="lf" style="--d:0.87s" fill="#2f5428" d="M0 0C5-7 17-8 26-1C17 6 6 6 0 0Z"/></g><g transform="translate(377.5 170.0) rotate(15) scale(0.81)"><path class="lf" style="--d:0.78s" fill="#3f6b34" d="M0 0C5-7 17-8 26-1C17 6 6 6 0 0Z"/></g><g transform="translate(378.6 177.4) rotate(149) scale(0.86)"><path class="lf" style="--d:0.75s" fill="#4f7d3a" d="M0 0C5-7 17-8 26-1C17 6 6 6 0 0Z"/></g><g transform="translate(378.6 177.4) rotate(31) scale(1.11)"><path class="lf" style="--d:0.80s" fill="#264a26" d="M0 0C5-7 17-8 26-1C17 6 6 6 0 0Z"/></g><g transform="translate(379.4 184.9) rotate(132) scale(1.04)"><path class="lf" style="--d:0.72s" fill="#2f5428" d="M0 0C5-7 17-8 26-1C17 6 6 6 0 0Z"/></g><g transform="translate(379.4 184.9) rotate(24) scale(0.76)"><path class="lf" style="--d:0.73s" fill="#2f5428" d="M0 0C5-7 17-8 26-1C17 6 6 6 0 0Z"/></g><g transform="translate(379.8 192.5) rotate(146) scale(0.75)"><path class="lf" style="--d:0.73s" fill="#264a26" d="M0 0C5-7 17-8 26-1C17 6 6 6 0 0Z"/></g><g transform="translate(379.8 192.5) rotate(33) scale(0.96)"><path class="lf" style="--d:0.78s" fill="#6b9a4c" d="M0 0C5-7 17-8 26-1C17 6 6 6 0 0Z"/></g><g transform="translate(380.0 200.0) rotate(135) scale(0.82)"><path class="lf" style="--d:0.76s" fill="#4f7d3a" d="M0 0C5-7 17-8 26-1C17 6 6 6 0 0Z"/></g><g transform="translate(380.0 200.0) rotate(40) scale(1.04)"><path class="lf" style="--d:0.69s" fill="#5e8a43" d="M0 0C5-7 17-8 26-1C17 6 6 6 0 0Z"/></g><g transform="translate(380.0 207.5) rotate(135) scale(1.05)"><path class="lf" style="--d:0.75s" fill="#5e8a43" d="M0 0C5-7 17-8 26-1C17 6 6 6 0 0Z"/></g><g transform="translate(380.0 207.5) rotate(29) scale(1.15)"><path class="lf" style="--d:0.67s" fill="#4f7d3a" d="M0 0C5-7 17-8 26-1C17 6 6 6 0 0Z"/></g><g transform="translate(380.0 215.0) rotate(156) scale(1.05)"><path class="lf" style="--d:0.68s" fill="#6b9a4c" d="M0 0C5-7 17-8 26-1C17 6 6 6 0 0Z"/></g><g transform="translate(380.0 215.0) rotate(33) scale(1.00)"><path class="lf" style="--d:0.74s" fill="#6b9a4c" d="M0 0C5-7 17-8 26-1C17 6 6 6 0 0Z"/></g><g transform="translate(380.0 222.5) rotate(155) scale(0.86)"><path class="lf" style="--d:0.74s" fill="#6b9a4c" d="M0 0C5-7 17-8 26-1C17 6 6 6 0 0Z"/></g><g transform="translate(380.0 222.5) rotate(29) scale(0.95)"><path class="lf" style="--d:0.66s" fill="#2f5428" d="M0 0C5-7 17-8 26-1C17 6 6 6 0 0Z"/></g><g transform="translate(380.0 230.0) rotate(155) scale(1.13)"><path class="lf" style="--d:0.64s" fill="#6b9a4c" d="M0 0C5-7 17-8 26-1C17 6 6 6 0 0Z"/></g><g transform="translate(380.0 230.0) rotate(45) scale(0.99)"><path class="lf" style="--d:0.69s" fill="#5e8a43" d="M0 0C5-7 17-8 26-1C17 6 6 6 0 0Z"/></g><g transform="translate(380.0 237.5) rotate(144) scale(1.02)"><path class="lf" style="--d:0.70s" fill="#264a26" d="M0 0C5-7 17-8 26-1C17 6 6 6 0 0Z"/></g><g transform="translate(380.0 237.5) rotate(46) scale(1.09)"><path class="lf" style="--d:0.62s" fill="#5e8a43" d="M0 0C5-7 17-8 26-1C17 6 6 6 0 0Z"/></g><g transform="translate(380.0 245.0) rotate(148) scale(1.07)"><path class="lf" style="--d:0.59s" fill="#5e8a43" d="M0 0C5-7 17-8 26-1C17 6 6 6 0 0Z"/></g><g transform="translate(380.0 245.0) rotate(26) scale(0.81)"><path class="lf" style="--d:0.65s" fill="#3f6b34" d="M0 0C5-7 17-8 26-1C17 6 6 6 0 0Z"/></g><g transform="translate(380.0 252.5) rotate(134) scale(1.14)"><path class="lf" style="--d:0.56s" fill="#6b9a4c" d="M0 0C5-7 17-8 26-1C17 6 6 6 0 0Z"/></g><g transform="translate(380.0 252.5) rotate(25) scale(1.00)"><path class="lf" style="--d:0.56s" fill="#6b9a4c" d="M0 0C5-7 17-8 26-1C17 6 6 6 0 0Z"/></g><g transform="translate(380.0 260.0) rotate(153) scale(1.05)"><path class="lf" style="--d:0.64s" fill="#2f5428" d="M0 0C5-7 17-8 26-1C17 6 6 6 0 0Z"/></g><g transform="translate(380.0 260.0) rotate(46) scale(0.78)"><path class="lf" style="--d:0.55s" fill="#6b9a4c" d="M0 0C5-7 17-8 26-1C17 6 6 6 0 0Z"/></g><g transform="translate(380.0 267.5) rotate(156) scale(0.79)"><path class="lf" style="--d:0.63s" fill="#3f6b34" d="M0 0C5-7 17-8 26-1C17 6 6 6 0 0Z"/></g><g transform="translate(380.0 267.5) rotate(38) scale(0.78)"><path class="lf" style="--d:0.58s" fill="#6b9a4c" d="M0 0C5-7 17-8 26-1C17 6 6 6 0 0Z"/></g><g transform="translate(380.0 275.0) rotate(138) scale(1.07)"><path class="lf" style="--d:0.54s" fill="#6b9a4c" d="M0 0C5-7 17-8 26-1C17 6 6 6 0 0Z"/></g><g transform="translate(380.0 275.0) rotate(45) scale(0.76)"><path class="lf" style="--d:0.51s" fill="#4f7d3a" d="M0 0C5-7 17-8 26-1C17 6 6 6 0 0Z"/></g><g transform="translate(380.0 282.5) rotate(145) scale(1.11)"><path class="lf" style="--d:0.59s" fill="#264a26" d="M0 0C5-7 17-8 26-1C17 6 6 6 0 0Z"/></g><g transform="translate(380.0 282.5) rotate(24) scale(0.76)"><path class="lf" style="--d:0.55s" fill="#5e8a43" d="M0 0C5-7 17-8 26-1C17 6 6 6 0 0Z"/></g><g transform="translate(380.0 290.0) rotate(146) scale(0.94)"><path class="lf" style="--d:0.49s" fill="#3f6b34" d="M0 0C5-7 17-8 26-1C17 6 6 6 0 0Z"/></g><g transform="translate(380.0 290.0) rotate(27) scale(0.79)"><path class="lf" style="--d:0.46s" fill="#4f7d3a" d="M0 0C5-7 17-8 26-1C17 6 6 6 0 0Z"/></g><g transform="translate(380.0 297.5) rotate(133) scale(1.05)"><path class="lf" style="--d:0.51s" fill="#3f6b34" d="M0 0C5-7 17-8 26-1C17 6 6 6 0 0Z"/></g><g transform="translate(380.0 297.5) rotate(46) scale(1.07)"><path class="lf" style="--d:0.52s" fill="#2f5428" d="M0 0C5-7 17-8 26-1C17 6 6 6 0 0Z"/></g><g transform="translate(380.0 305.0) rotate(156) scale(0.96)"><path class="lf" style="--d:0.46s" fill="#264a26" d="M0 0C5-7 17-8 26-1C17 6 6 6 0 0Z"/></g><g transform="translate(380.0 305.0) rotate(27) scale(1.03)"><path class="lf" style="--d:0.54s" fill="#5e8a43" d="M0 0C5-7 17-8 26-1C17 6 6 6 0 0Z"/></g><g transform="translate(380.0 312.5) rotate(146) scale(0.95)"><path class="lf" style="--d:0.42s" fill="#6b9a4c" d="M0 0C5-7 17-8 26-1C17 6 6 6 0 0Z"/></g><g transform="translate(380.0 312.5) rotate(44) scale(0.79)"><path class="lf" style="--d:0.50s" fill="#5e8a43" d="M0 0C5-7 17-8 26-1C17 6 6 6 0 0Z"/></g><g transform="translate(380.0 320.0) rotate(138) scale(1.01)"><path class="lf" style="--d:0.42s" fill="#4f7d3a" d="M0 0C5-7 17-8 26-1C17 6 6 6 0 0Z"/></g><g transform="translate(380.0 320.0) rotate(47) scale(0.95)"><path class="lf" style="--d:0.47s" fill="#5e8a43" d="M0 0C5-7 17-8 26-1C17 6 6 6 0 0Z"/></g><g transform="translate(380.0 327.5) rotate(151) scale(0.80)"><path class="lf" style="--d:0.46s" fill="#264a26" d="M0 0C5-7 17-8 26-1C17 6 6 6 0 0Z"/></g><g transform="translate(380.0 327.5) rotate(36) scale(0.89)"><path class="lf" style="--d:0.48s" fill="#4f7d3a" d="M0 0C5-7 17-8 26-1C17 6 6 6 0 0Z"/></g><g transform="translate(380.0 335.0) rotate(137) scale(0.97)"><path class="lf" style="--d:0.41s" fill="#4f7d3a" d="M0 0C5-7 17-8 26-1C17 6 6 6 0 0Z"/></g><g transform="translate(380.0 335.0) rotate(31) scale(0.98)"><path class="lf" style="--d:0.43s" fill="#2f5428" d="M0 0C5-7 17-8 26-1C17 6 6 6 0 0Z"/></g><g transform="translate(380.0 342.5) rotate(140) scale(0.95)"><path class="lf" style="--d:0.42s" fill="#4f7d3a" d="M0 0C5-7 17-8 26-1C17 6 6 6 0 0Z"/></g><g transform="translate(380.0 342.5) rotate(46) scale(0.81)"><path class="lf" style="--d:0.42s" fill="#2f5428" d="M0 0C5-7 17-8 26-1C17 6 6 6 0 0Z"/></g><g transform="translate(380.0 350.0) rotate(141) scale(0.89)"><path class="lf" style="--d:0.34s" fill="#2f5428" d="M0 0C5-7 17-8 26-1C17 6 6 6 0 0Z"/></g><g transform="translate(380.0 350.0) rotate(27) scale(1.04)"><path class="lf" style="--d:0.40s" fill="#3f6b34" d="M0 0C5-7 17-8 26-1C17 6 6 6 0 0Z"/></g><g transform="translate(380.0 357.5) rotate(152) scale(0.78)"><path class="lf" style="--d:0.39s" fill="#2f5428" d="M0 0C5-7 17-8 26-1C17 6 6 6 0 0Z"/></g><g transform="translate(380.0 357.5) rotate(45) scale(0.80)"><path class="lf" style="--d:0.33s" fill="#6b9a4c" d="M0 0C5-7 17-8 26-1C17 6 6 6 0 0Z"/></g><g transform="translate(380.0 365.0) rotate(143) scale(0.85)"><path class="lf" style="--d:0.37s" fill="#3f6b34" d="M0 0C5-7 17-8 26-1C17 6 6 6 0 0Z"/></g><g transform="translate(380.0 365.0) rotate(30) scale(0.87)"><path class="lf" style="--d:0.28s" fill="#6b9a4c" d="M0 0C5-7 17-8 26-1C17 6 6 6 0 0Z"/></g><g transform="translate(380.0 372.5) rotate(151) scale(0.90)"><path class="lf" style="--d:0.37s" fill="#3f6b34" d="M0 0C5-7 17-8 26-1C17 6 6 6 0 0Z"/></g><g transform="translate(380.0 372.5) rotate(39) scale(0.84)"><path class="lf" style="--d:0.36s" fill="#6b9a4c" d="M0 0C5-7 17-8 26-1C17 6 6 6 0 0Z"/></g><g transform="translate(380.0 380.0) rotate(150) scale(0.82)"><path class="lf" style="--d:0.34s" fill="#6b9a4c" d="M0 0C5-7 17-8 26-1C17 6 6 6 0 0Z"/></g><g transform="translate(380.0 380.0) rotate(33) scale(0.81)"><path class="lf" style="--d:0.27s" fill="#5e8a43" d="M0 0C5-7 17-8 26-1C17 6 6 6 0 0Z"/></g><g transform="translate(380.0 387.5) rotate(152) scale(0.84)"><path class="lf" style="--d:0.31s" fill="#2f5428" d="M0 0C5-7 17-8 26-1C17 6 6 6 0 0Z"/></g><g transform="translate(380.0 387.5) rotate(35) scale(0.64)"><path class="lf" style="--d:0.23s" fill="#5e8a43" d="M0 0C5-7 17-8 26-1C17 6 6 6 0 0Z"/></g><g transform="translate(380.0 395.0) rotate(155) scale(0.68)"><path class="lf" style="--d:0.23s" fill="#6b9a4c" d="M0 0C5-7 17-8 26-1C17 6 6 6 0 0Z"/></g><g transform="translate(380.0 395.0) rotate(43) scale(0.75)"><path class="lf" style="--d:0.31s" fill="#5e8a43" d="M0 0C5-7 17-8 26-1C17 6 6 6 0 0Z"/></g><g transform="translate(380.0 402.5) rotate(137) scale(0.56)"><path class="lf" style="--d:0.28s" fill="#2f5428" d="M0 0C5-7 17-8 26-1C17 6 6 6 0 0Z"/></g><g transform="translate(380.0 402.5) rotate(43) scale(0.63)"><path class="lf" style="--d:0.24s" fill="#3f6b34" d="M0 0C5-7 17-8 26-1C17 6 6 6 0 0Z"/></g><g transform="translate(380.0 410.0) rotate(148) scale(0.57)"><path class="lf" style="--d:0.27s" fill="#3f6b34" d="M0 0C5-7 17-8 26-1C17 6 6 6 0 0Z"/></g><g transform="translate(380.0 410.0) rotate(28) scale(0.55)"><path class="lf" style="--d:0.25s" fill="#5e8a43" d="M0 0C5-7 17-8 26-1C17 6 6 6 0 0Z"/></g><g transform="translate(380.0 417.5) rotate(150) scale(0.58)"><path class="lf" style="--d:0.22s" fill="#3f6b34" d="M0 0C5-7 17-8 26-1C17 6 6 6 0 0Z"/></g><g transform="translate(380.0 417.5) rotate(33) scale(0.47)"><path class="lf" style="--d:0.15s" fill="#5e8a43" d="M0 0C5-7 17-8 26-1C17 6 6 6 0 0Z"/></g><g transform="translate(18.6 417.2) rotate(-31) scale(0.51)"><path class="lf" style="--d:0.22s" fill="#6b9a4c" d="M0 0C5-7 17-8 26-1C17 6 6 6 0 0Z"/></g><g transform="translate(18.6 417.2) rotate(-134) scale(0.48)"><path class="lf" style="--d:0.21s" fill="#5e8a43" d="M0 0C5-7 17-8 26-1C17 6 6 6 0 0Z"/></g><g transform="translate(21.2 401.6) rotate(-36) scale(0.70)"><path class="lf" style="--d:0.21s" fill="#5e8a43" d="M0 0C5-7 17-8 26-1C17 6 6 6 0 0Z"/></g><g transform="translate(21.2 401.6) rotate(-152) scale(0.51)"><path class="lf" style="--d:0.26s" fill="#6b9a4c" d="M0 0C5-7 17-8 26-1C17 6 6 6 0 0Z"/></g><g transform="translate(20.3 388.9) rotate(-39) scale(0.81)"><path class="lf" style="--d:0.30s" fill="#2f5428" d="M0 0C5-7 17-8 26-1C17 6 6 6 0 0Z"/></g><g transform="translate(20.3 388.9) rotate(-133) scale(0.82)"><path class="lf" style="--d:0.32s" fill="#5e8a43" d="M0 0C5-7 17-8 26-1C17 6 6 6 0 0Z"/></g><g transform="translate(16.5 375.1) rotate(-38) scale(0.91)"><path class="lf" style="--d:0.36s" fill="#5e8a43" d="M0 0C5-7 17-8 26-1C17 6 6 6 0 0Z"/></g><g transform="translate(16.5 375.1) rotate(-133) scale(0.78)"><path class="lf" style="--d:0.34s" fill="#4f7d3a" d="M0 0C5-7 17-8 26-1C17 6 6 6 0 0Z"/></g><g transform="translate(16.3 359.5) rotate(-38) scale(1.03)"><path class="lf" style="--d:0.38s" fill="#4f7d3a" d="M0 0C5-7 17-8 26-1C17 6 6 6 0 0Z"/></g><g transform="translate(16.3 359.5) rotate(-142) scale(0.91)"><path class="lf" style="--d:0.38s" fill="#264a26" d="M0 0C5-7 17-8 26-1C17 6 6 6 0 0Z"/></g><g transform="translate(16.6 341.7) rotate(-46) scale(1.12)"><path class="lf" style="--d:0.43s" fill="#5e8a43" d="M0 0C5-7 17-8 26-1C17 6 6 6 0 0Z"/></g><g transform="translate(16.6 341.7) rotate(-144) scale(1.06)"><path class="lf" style="--d:0.38s" fill="#2f5428" d="M0 0C5-7 17-8 26-1C17 6 6 6 0 0Z"/></g><g transform="translate(19.4 332.6) rotate(-24) scale(1.01)"><path class="lf" style="--d:0.45s" fill="#2f5428" d="M0 0C5-7 17-8 26-1C17 6 6 6 0 0Z"/></g><g transform="translate(19.4 332.6) rotate(-136) scale(0.79)"><path class="lf" style="--d:0.39s" fill="#2f5428" d="M0 0C5-7 17-8 26-1C17 6 6 6 0 0Z"/></g><g transform="translate(17.0 312.8) rotate(-25) scale(1.06)"><path class="lf" style="--d:0.50s" fill="#2f5428" d="M0 0C5-7 17-8 26-1C17 6 6 6 0 0Z"/></g><g transform="translate(17.0 312.8) rotate(-134) scale(1.11)"><path class="lf" style="--d:0.42s" fill="#264a26" d="M0 0C5-7 17-8 26-1C17 6 6 6 0 0Z"/></g><g transform="translate(21.0 303.6) rotate(-27) scale(0.97)"><path class="lf" style="--d:0.47s" fill="#6b9a4c" d="M0 0C5-7 17-8 26-1C17 6 6 6 0 0Z"/></g><g transform="translate(21.0 303.6) rotate(-137) scale(0.96)"><path class="lf" style="--d:0.53s" fill="#6b9a4c" d="M0 0C5-7 17-8 26-1C17 6 6 6 0 0Z"/></g><g transform="translate(20.6 284.2) rotate(-41) scale(0.80)"><path class="lf" style="--d:0.50s" fill="#5e8a43" d="M0 0C5-7 17-8 26-1C17 6 6 6 0 0Z"/></g><g transform="translate(20.6 284.2) rotate(-135) scale(0.77)"><path class="lf" style="--d:0.57s" fill="#5e8a43" d="M0 0C5-7 17-8 26-1C17 6 6 6 0 0Z"/></g><g transform="translate(23.8 266.4) rotate(-26) scale(0.82)"><path class="lf" style="--d:0.52s" fill="#264a26" d="M0 0C5-7 17-8 26-1C17 6 6 6 0 0Z"/></g><g transform="translate(23.8 266.4) rotate(-145) scale(0.94)"><path class="lf" style="--d:0.56s" fill="#264a26" d="M0 0C5-7 17-8 26-1C17 6 6 6 0 0Z"/></g><g transform="translate(22.9 253.3) rotate(-45) scale(0.92)"><path class="lf" style="--d:0.63s" fill="#6b9a4c" d="M0 0C5-7 17-8 26-1C17 6 6 6 0 0Z"/></g><g transform="translate(22.9 253.3) rotate(-156) scale(0.76)"><path class="lf" style="--d:0.65s" fill="#264a26" d="M0 0C5-7 17-8 26-1C17 6 6 6 0 0Z"/></g><g transform="translate(17.2 236.9) rotate(-35) scale(1.07)"><path class="lf" style="--d:0.65s" fill="#3f6b34" d="M0 0C5-7 17-8 26-1C17 6 6 6 0 0Z"/></g><g transform="translate(17.2 236.9) rotate(-147) scale(0.76)"><path class="lf" style="--d:0.61s" fill="#6b9a4c" d="M0 0C5-7 17-8 26-1C17 6 6 6 0 0Z"/></g><g transform="translate(18.5 227.5) rotate(-36) scale(1.01)"><path class="lf" style="--d:0.69s" fill="#4f7d3a" d="M0 0C5-7 17-8 26-1C17 6 6 6 0 0Z"/></g><g transform="translate(18.5 227.5) rotate(-149) scale(0.83)"><path class="lf" style="--d:0.66s" fill="#5e8a43" d="M0 0C5-7 17-8 26-1C17 6 6 6 0 0Z"/></g><g transform="translate(17.4 210.7) rotate(-27) scale(0.87)"><path class="lf" style="--d:0.72s" fill="#4f7d3a" d="M0 0C5-7 17-8 26-1C17 6 6 6 0 0Z"/></g><g transform="translate(17.4 210.7) rotate(-149) scale(0.86)"><path class="lf" style="--d:0.69s" fill="#264a26" d="M0 0C5-7 17-8 26-1C17 6 6 6 0 0Z"/></g><g transform="translate(21.1 199.0) rotate(-39) scale(0.80)"><path class="lf" style="--d:0.74s" fill="#2f5428" d="M0 0C5-7 17-8 26-1C17 6 6 6 0 0Z"/></g><g transform="translate(21.1 199.0) rotate(-147) scale(1.00)"><path class="lf" style="--d:0.77s" fill="#3f6b34" d="M0 0C5-7 17-8 26-1C17 6 6 6 0 0Z"/></g><g transform="translate(21.0 181.4) rotate(-35) scale(0.98)"><path class="lf" style="--d:0.74s" fill="#5e8a43" d="M0 0C5-7 17-8 26-1C17 6 6 6 0 0Z"/></g><g transform="translate(21.0 181.4) rotate(-134) scale(1.12)"><path class="lf" style="--d:0.75s" fill="#264a26" d="M0 0C5-7 17-8 26-1C17 6 6 6 0 0Z"/></g><g transform="translate(19.0 167.6) rotate(-23) scale(0.97)"><path class="lf" style="--d:0.85s" fill="#5e8a43" d="M0 0C5-7 17-8 26-1C17 6 6 6 0 0Z"/></g><g transform="translate(19.0 167.6) rotate(-145) scale(0.99)"><path class="lf" style="--d:0.78s" fill="#6b9a4c" d="M0 0C5-7 17-8 26-1C17 6 6 6 0 0Z"/></g><g transform="translate(27.1 154.7) rotate(-30) scale(1.00)"><path class="lf" style="--d:0.84s" fill="#2f5428" d="M0 0C5-7 17-8 26-1C17 6 6 6 0 0Z"/></g><g transform="translate(27.1 154.7) rotate(-142) scale(1.06)"><path class="lf" style="--d:0.92s" fill="#6b9a4c" d="M0 0C5-7 17-8 26-1C17 6 6 6 0 0Z"/></g><g transform="translate(28.5 141.5) rotate(-22) scale(0.87)"><path class="lf" style="--d:0.89s" fill="#6b9a4c" d="M0 0C5-7 17-8 26-1C17 6 6 6 0 0Z"/></g><g transform="translate(28.5 141.5) rotate(-124) scale(0.88)"><path class="lf" style="--d:0.92s" fill="#5e8a43" d="M0 0C5-7 17-8 26-1C17 6 6 6 0 0Z"/></g><g transform="translate(35.2 125.2) rotate(-22) scale(0.95)"><path class="lf" style="--d:0.91s" fill="#264a26" d="M0 0C5-7 17-8 26-1C17 6 6 6 0 0Z"/></g><g transform="translate(35.2 125.2) rotate(-122) scale(0.98)"><path class="lf" style="--d:0.89s" fill="#5e8a43" d="M0 0C5-7 17-8 26-1C17 6 6 6 0 0Z"/></g><g transform="translate(44.6 114.9) rotate(5) scale(0.99)"><path class="lf" style="--d:0.98s" fill="#6b9a4c" d="M0 0C5-7 17-8 26-1C17 6 6 6 0 0Z"/></g><g transform="translate(44.6 114.9) rotate(-117) scale(0.79)"><path class="lf" style="--d:1.04s" fill="#6b9a4c" d="M0 0C5-7 17-8 26-1C17 6 6 6 0 0Z"/></g><g transform="translate(48.0 101.0) rotate(3) scale(0.92)"><path class="lf" style="--d:0.98s" fill="#3f6b34" d="M0 0C5-7 17-8 26-1C17 6 6 6 0 0Z"/></g><g transform="translate(48.0 101.0) rotate(-120) scale(0.79)"><path class="lf" style="--d:0.97s" fill="#3f6b34" d="M0 0C5-7 17-8 26-1C17 6 6 6 0 0Z"/></g><g transform="translate(59.1 91.2) rotate(9) scale(0.85)"><path class="lf" style="--d:1.11s" fill="#6b9a4c" d="M0 0C5-7 17-8 26-1C17 6 6 6 0 0Z"/></g><g transform="translate(59.1 91.2) rotate(-98) scale(1.05)"><path class="lf" style="--d:1.09s" fill="#6b9a4c" d="M0 0C5-7 17-8 26-1C17 6 6 6 0 0Z"/></g><g transform="translate(70.6 75.1) rotate(8) scale(1.00)"><path class="lf" style="--d:1.12s" fill="#6b9a4c" d="M0 0C5-7 17-8 26-1C17 6 6 6 0 0Z"/></g><g transform="translate(70.6 75.1) rotate(-97) scale(1.12)"><path class="lf" style="--d:1.04s" fill="#3f6b34" d="M0 0C5-7 17-8 26-1C17 6 6 6 0 0Z"/></g><g transform="translate(83.4 63.2) rotate(3) scale(1.01)"><path class="lf" style="--d:1.11s" fill="#264a26" d="M0 0C5-7 17-8 26-1C17 6 6 6 0 0Z"/></g><g transform="translate(83.4 63.2) rotate(-94) scale(0.82)"><path class="lf" style="--d:1.11s" fill="#5e8a43" d="M0 0C5-7 17-8 26-1C17 6 6 6 0 0Z"/></g><g transform="translate(90.5 58.7) rotate(22) scale(1.04)"><path class="lf" style="--d:1.13s" fill="#5e8a43" d="M0 0C5-7 17-8 26-1C17 6 6 6 0 0Z"/></g><g transform="translate(90.5 58.7) rotate(-100) scale(0.90)"><path class="lf" style="--d:1.21s" fill="#6b9a4c" d="M0 0C5-7 17-8 26-1C17 6 6 6 0 0Z"/></g><g transform="translate(100.8 47.9) rotate(33) scale(1.06)"><path class="lf" style="--d:1.24s" fill="#5e8a43" d="M0 0C5-7 17-8 26-1C17 6 6 6 0 0Z"/></g><g transform="translate(100.8 47.9) rotate(-84) scale(0.87)"><path class="lf" style="--d:1.23s" fill="#3f6b34" d="M0 0C5-7 17-8 26-1C17 6 6 6 0 0Z"/></g><g transform="translate(112.9 41.8) rotate(33) scale(0.99)"><path class="lf" style="--d:1.19s" fill="#264a26" d="M0 0C5-7 17-8 26-1C17 6 6 6 0 0Z"/></g><g transform="translate(112.9 41.8) rotate(-84) scale(1.08)"><path class="lf" style="--d:1.29s" fill="#264a26" d="M0 0C5-7 17-8 26-1C17 6 6 6 0 0Z"/></g><g transform="translate(132.4 34.6) rotate(39) scale(1.02)"><path class="lf" style="--d:1.25s" fill="#264a26" d="M0 0C5-7 17-8 26-1C17 6 6 6 0 0Z"/></g><g transform="translate(132.4 34.6) rotate(-83) scale(1.03)"><path class="lf" style="--d:1.27s" fill="#4f7d3a" d="M0 0C5-7 17-8 26-1C17 6 6 6 0 0Z"/></g><g transform="translate(147.4 27.3) rotate(32) scale(1.08)"><path class="lf" style="--d:1.28s" fill="#3f6b34" d="M0 0C5-7 17-8 26-1C17 6 6 6 0 0Z"/></g><g transform="translate(147.4 27.3) rotate(-78) scale(1.15)"><path class="lf" style="--d:1.36s" fill="#2f5428" d="M0 0C5-7 17-8 26-1C17 6 6 6 0 0Z"/></g><g transform="translate(160.5 25.5) rotate(38) scale(1.02)"><path class="lf" style="--d:1.31s" fill="#5e8a43" d="M0 0C5-7 17-8 26-1C17 6 6 6 0 0Z"/></g><g transform="translate(160.5 25.5) rotate(-61) scale(1.07)"><path class="lf" style="--d:1.38s" fill="#2f5428" d="M0 0C5-7 17-8 26-1C17 6 6 6 0 0Z"/></g><g transform="translate(174.3 21.6) rotate(51) scale(0.87)"><path class="lf" style="--d:1.39s" fill="#3f6b34" d="M0 0C5-7 17-8 26-1C17 6 6 6 0 0Z"/></g><g transform="translate(174.3 21.6) rotate(-56) scale(0.85)"><path class="lf" style="--d:1.39s" fill="#3f6b34" d="M0 0C5-7 17-8 26-1C17 6 6 6 0 0Z"/></g><g transform="translate(191.4 23.9) rotate(45) scale(1.07)"><path class="lf" style="--d:1.44s" fill="#3f6b34" d="M0 0C5-7 17-8 26-1C17 6 6 6 0 0Z"/></g><g transform="translate(191.4 23.9) rotate(-63) scale(1.10)"><path class="lf" style="--d:1.43s" fill="#264a26" d="M0 0C5-7 17-8 26-1C17 6 6 6 0 0Z"/></g><g transform="translate(203.6 21.4) rotate(49) scale(0.84)"><path class="lf" style="--d:1.46s" fill="#3f6b34" d="M0 0C5-7 17-8 26-1C17 6 6 6 0 0Z"/></g><g transform="translate(203.6 21.4) rotate(-47) scale(0.98)"><path class="lf" style="--d:1.48s" fill="#5e8a43" d="M0 0C5-7 17-8 26-1C17 6 6 6 0 0Z"/></g><g transform="translate(215.3 22.6) rotate(58) scale(1.12)"><path class="lf" style="--d:1.35s" fill="#5e8a43" d="M0 0C5-7 17-8 26-1C17 6 6 6 0 0Z"/></g><g transform="translate(215.3 22.6) rotate(-53) scale(1.06)"><path class="lf" style="--d:1.34s" fill="#2f5428" d="M0 0C5-7 17-8 26-1C17 6 6 6 0 0Z"/></g><g transform="translate(234.9 27.1) rotate(55) scale(0.99)"><path class="lf" style="--d:1.42s" fill="#3f6b34" d="M0 0C5-7 17-8 26-1C17 6 6 6 0 0Z"/></g><g transform="translate(234.9 27.1) rotate(-51) scale(0.94)"><path class="lf" style="--d:1.41s" fill="#264a26" d="M0 0C5-7 17-8 26-1C17 6 6 6 0 0Z"/></g><g transform="translate(251.0 24.9) rotate(77) scale(0.79)"><path class="lf" style="--d:1.36s" fill="#5e8a43" d="M0 0C5-7 17-8 26-1C17 6 6 6 0 0Z"/></g><g transform="translate(251.0 24.9) rotate(-43) scale(0.85)"><path class="lf" style="--d:1.38s" fill="#3f6b34" d="M0 0C5-7 17-8 26-1C17 6 6 6 0 0Z"/></g><g transform="translate(261.8 32.6) rotate(77) scale(0.76)"><path class="lf" style="--d:1.33s" fill="#3f6b34" d="M0 0C5-7 17-8 26-1C17 6 6 6 0 0Z"/></g><g transform="translate(261.8 32.6) rotate(-26) scale(1.13)"><path class="lf" style="--d:1.30s" fill="#3f6b34" d="M0 0C5-7 17-8 26-1C17 6 6 6 0 0Z"/></g><g transform="translate(272.8 36.8) rotate(74) scale(1.03)"><path class="lf" style="--d:1.25s" fill="#3f6b34" d="M0 0C5-7 17-8 26-1C17 6 6 6 0 0Z"/></g><g transform="translate(272.8 36.8) rotate(-30) scale(1.13)"><path class="lf" style="--d:1.21s" fill="#6b9a4c" d="M0 0C5-7 17-8 26-1C17 6 6 6 0 0Z"/></g><g transform="translate(287.3 41.1) rotate(97) scale(0.90)"><path class="lf" style="--d:1.18s" fill="#2f5428" d="M0 0C5-7 17-8 26-1C17 6 6 6 0 0Z"/></g><g transform="translate(287.3 41.1) rotate(-36) scale(0.85)"><path class="lf" style="--d:1.22s" fill="#4f7d3a" d="M0 0C5-7 17-8 26-1C17 6 6 6 0 0Z"/></g><g transform="translate(299.2 54.3) rotate(97) scale(1.12)"><path class="lf" style="--d:1.20s" fill="#4f7d3a" d="M0 0C5-7 17-8 26-1C17 6 6 6 0 0Z"/></g><g transform="translate(299.2 54.3) rotate(-30) scale(1.14)"><path class="lf" style="--d:1.15s" fill="#3f6b34" d="M0 0C5-7 17-8 26-1C17 6 6 6 0 0Z"/></g><g transform="translate(311.8 59.3) rotate(90) scale(0.83)"><path class="lf" style="--d:1.15s" fill="#6b9a4c" d="M0 0C5-7 17-8 26-1C17 6 6 6 0 0Z"/></g><g transform="translate(311.8 59.3) rotate(-18) scale(0.79)"><path class="lf" style="--d:1.12s" fill="#4f7d3a" d="M0 0C5-7 17-8 26-1C17 6 6 6 0 0Z"/></g><g transform="translate(325.1 74.4) rotate(93) scale(0.90)"><path class="lf" style="--d:1.06s" fill="#5e8a43" d="M0 0C5-7 17-8 26-1C17 6 6 6 0 0Z"/></g><g transform="translate(325.1 74.4) rotate(-1) scale(0.76)"><path class="lf" style="--d:1.13s" fill="#6b9a4c" d="M0 0C5-7 17-8 26-1C17 6 6 6 0 0Z"/></g><g transform="translate(332.9 82.0) rotate(115) scale(1.08)"><path class="lf" style="--d:1.11s" fill="#3f6b34" d="M0 0C5-7 17-8 26-1C17 6 6 6 0 0Z"/></g><g transform="translate(332.9 82.0) rotate(5) scale(0.81)"><path class="lf" style="--d:1.11s" fill="#5e8a43" d="M0 0C5-7 17-8 26-1C17 6 6 6 0 0Z"/></g><g transform="translate(346.0 97.3) rotate(108) scale(0.76)"><path class="lf" style="--d:1.01s" fill="#3f6b34" d="M0 0C5-7 17-8 26-1C17 6 6 6 0 0Z"/></g><g transform="translate(346.0 97.3) rotate(-4) scale(0.94)"><path class="lf" style="--d:1.00s" fill="#6b9a4c" d="M0 0C5-7 17-8 26-1C17 6 6 6 0 0Z"/></g><g transform="translate(356.5 109.7) rotate(115) scale(0.82)"><path class="lf" style="--d:0.95s" fill="#5e8a43" d="M0 0C5-7 17-8 26-1C17 6 6 6 0 0Z"/></g><g transform="translate(356.5 109.7) rotate(-2) scale(0.86)"><path class="lf" style="--d:0.93s" fill="#5e8a43" d="M0 0C5-7 17-8 26-1C17 6 6 6 0 0Z"/></g><g transform="translate(359.5 119.3) rotate(113) scale(0.87)"><path class="lf" style="--d:0.90s" fill="#2f5428" d="M0 0C5-7 17-8 26-1C17 6 6 6 0 0Z"/></g><g transform="translate(359.5 119.3) rotate(20) scale(0.94)"><path class="lf" style="--d:0.90s" fill="#2f5428" d="M0 0C5-7 17-8 26-1C17 6 6 6 0 0Z"/></g><g transform="translate(366.2 136.8) rotate(125) scale(1.02)"><path class="lf" style="--d:0.95s" fill="#2f5428" d="M0 0C5-7 17-8 26-1C17 6 6 6 0 0Z"/></g><g transform="translate(366.2 136.8) rotate(12) scale(1.05)"><path class="lf" style="--d:0.89s" fill="#4f7d3a" d="M0 0C5-7 17-8 26-1C17 6 6 6 0 0Z"/></g><g transform="translate(376.0 145.2) rotate(123) scale(0.85)"><path class="lf" style="--d:0.92s" fill="#5e8a43" d="M0 0C5-7 17-8 26-1C17 6 6 6 0 0Z"/></g><g transform="translate(376.0 145.2) rotate(10) scale(1.04)"><path class="lf" style="--d:0.89s" fill="#4f7d3a" d="M0 0C5-7 17-8 26-1C17 6 6 6 0 0Z"/></g><g transform="translate(373.5 160.4) rotate(124) scale(0.95)"><path class="lf" style="--d:0.78s" fill="#264a26" d="M0 0C5-7 17-8 26-1C17 6 6 6 0 0Z"/></g><g transform="translate(373.5 160.4) rotate(20) scale(0.96)"><path class="lf" style="--d:0.78s" fill="#2f5428" d="M0 0C5-7 17-8 26-1C17 6 6 6 0 0Z"/></g><g transform="translate(376.4 177.3) rotate(129) scale(0.86)"><path class="lf" style="--d:0.76s" fill="#2f5428" d="M0 0C5-7 17-8 26-1C17 6 6 6 0 0Z"/></g><g transform="translate(376.4 177.3) rotate(30) scale(1.03)"><path class="lf" style="--d:0.84s" fill="#2f5428" d="M0 0C5-7 17-8 26-1C17 6 6 6 0 0Z"/></g><g transform="translate(380.6 190.6) rotate(135) scale(1.04)"><path class="lf" style="--d:0.72s" fill="#4f7d3a" d="M0 0C5-7 17-8 26-1C17 6 6 6 0 0Z"/></g><g transform="translate(380.6 190.6) rotate(35) scale(1.00)"><path class="lf" style="--d:0.73s" fill="#2f5428" d="M0 0C5-7 17-8 26-1C17 6 6 6 0 0Z"/></g><g transform="translate(376.0 206.9) rotate(153) scale(1.04)"><path class="lf" style="--d:0.78s" fill="#5e8a43" d="M0 0C5-7 17-8 26-1C17 6 6 6 0 0Z"/></g><g transform="translate(376.0 206.9) rotate(43) scale(0.89)"><path class="lf" style="--d:0.77s" fill="#4f7d3a" d="M0 0C5-7 17-8 26-1C17 6 6 6 0 0Z"/></g><g transform="translate(379.0 223.0) rotate(136) scale(0.76)"><path class="lf" style="--d:0.71s" fill="#5e8a43" d="M0 0C5-7 17-8 26-1C17 6 6 6 0 0Z"/></g><g transform="translate(379.0 223.0) rotate(24) scale(0.98)"><path class="lf" style="--d:0.72s" fill="#4f7d3a" d="M0 0C5-7 17-8 26-1C17 6 6 6 0 0Z"/></g><g transform="translate(383.6 239.0) rotate(145) scale(1.09)"><path class="lf" style="--d:0.65s" fill="#4f7d3a" d="M0 0C5-7 17-8 26-1C17 6 6 6 0 0Z"/></g><g transform="translate(383.6 239.0) rotate(29) scale(0.80)"><path class="lf" style="--d:0.69s" fill="#6b9a4c" d="M0 0C5-7 17-8 26-1C17 6 6 6 0 0Z"/></g><g transform="translate(380.1 253.4) rotate(147) scale(1.06)"><path class="lf" style="--d:0.67s" fill="#5e8a43" d="M0 0C5-7 17-8 26-1C17 6 6 6 0 0Z"/></g><g transform="translate(380.1 253.4) rotate(35) scale(0.79)"><path class="lf" style="--d:0.62s" fill="#6b9a4c" d="M0 0C5-7 17-8 26-1C17 6 6 6 0 0Z"/></g><g transform="translate(381.4 263.9) rotate(139) scale(0.96)"><path class="lf" style="--d:0.53s" fill="#3f6b34" d="M0 0C5-7 17-8 26-1C17 6 6 6 0 0Z"/></g><g transform="translate(381.4 263.9) rotate(29) scale(0.82)"><path class="lf" style="--d:0.62s" fill="#4f7d3a" d="M0 0C5-7 17-8 26-1C17 6 6 6 0 0Z"/></g><g transform="translate(383.2 284.7) rotate(151) scale(0.79)"><path class="lf" style="--d:0.51s" fill="#6b9a4c" d="M0 0C5-7 17-8 26-1C17 6 6 6 0 0Z"/></g><g transform="translate(383.2 284.7) rotate(36) scale(1.00)"><path class="lf" style="--d:0.57s" fill="#5e8a43" d="M0 0C5-7 17-8 26-1C17 6 6 6 0 0Z"/></g><g transform="translate(383.0 299.9) rotate(137) scale(1.10)"><path class="lf" style="--d:0.48s" fill="#6b9a4c" d="M0 0C5-7 17-8 26-1C17 6 6 6 0 0Z"/></g><g transform="translate(383.0 299.9) rotate(26) scale(0.98)"><path class="lf" style="--d:0.46s" fill="#4f7d3a" d="M0 0C5-7 17-8 26-1C17 6 6 6 0 0Z"/></g><g transform="translate(379.1 311.7) rotate(154) scale(0.97)"><path class="lf" style="--d:0.43s" fill="#2f5428" d="M0 0C5-7 17-8 26-1C17 6 6 6 0 0Z"/></g><g transform="translate(379.1 311.7) rotate(46) scale(1.05)"><path class="lf" style="--d:0.41s" fill="#2f5428" d="M0 0C5-7 17-8 26-1C17 6 6 6 0 0Z"/></g><g transform="translate(376.8 328.6) rotate(153) scale(1.03)"><path class="lf" style="--d:0.44s" fill="#264a26" d="M0 0C5-7 17-8 26-1C17 6 6 6 0 0Z"/></g><g transform="translate(376.8 328.6) rotate(31) scale(1.13)"><path class="lf" style="--d:0.40s" fill="#4f7d3a" d="M0 0C5-7 17-8 26-1C17 6 6 6 0 0Z"/></g><g transform="translate(376.5 339.0) rotate(152) scale(0.92)"><path class="lf" style="--d:0.44s" fill="#264a26" d="M0 0C5-7 17-8 26-1C17 6 6 6 0 0Z"/></g><g transform="translate(376.5 339.0) rotate(31) scale(1.09)"><path class="lf" style="--d:0.35s" fill="#3f6b34" d="M0 0C5-7 17-8 26-1C17 6 6 6 0 0Z"/></g><g transform="translate(377.7 354.8) rotate(149) scale(0.86)"><path class="lf" style="--d:0.30s" fill="#5e8a43" d="M0 0C5-7 17-8 26-1C17 6 6 6 0 0Z"/></g><g transform="translate(377.7 354.8) rotate(33) scale(0.80)"><path class="lf" style="--d:0.36s" fill="#4f7d3a" d="M0 0C5-7 17-8 26-1C17 6 6 6 0 0Z"/></g><g transform="translate(378.7 368.9) rotate(152) scale(0.69)"><path class="lf" style="--d:0.37s" fill="#5e8a43" d="M0 0C5-7 17-8 26-1C17 6 6 6 0 0Z"/></g><g transform="translate(378.7 368.9) rotate(24) scale(0.92)"><path class="lf" style="--d:0.34s" fill="#3f6b34" d="M0 0C5-7 17-8 26-1C17 6 6 6 0 0Z"/></g><g transform="translate(376.0 384.7) rotate(148) scale(0.77)"><path class="lf" style="--d:0.32s" fill="#4f7d3a" d="M0 0C5-7 17-8 26-1C17 6 6 6 0 0Z"/></g><g transform="translate(376.0 384.7) rotate(35) scale(0.60)"><path class="lf" style="--d:0.28s" fill="#3f6b34" d="M0 0C5-7 17-8 26-1C17 6 6 6 0 0Z"/></g><g transform="translate(376.8 401.4) rotate(141) scale(0.57)"><path class="lf" style="--d:0.21s" fill="#4f7d3a" d="M0 0C5-7 17-8 26-1C17 6 6 6 0 0Z"/></g><g transform="translate(376.8 401.4) rotate(45) scale(0.74)"><path class="lf" style="--d:0.20s" fill="#264a26" d="M0 0C5-7 17-8 26-1C17 6 6 6 0 0Z"/></g><g transform="translate(376.2 420.5) rotate(136) scale(0.62)"><path class="lf" style="--d:0.17s" fill="#5e8a43" d="M0 0C5-7 17-8 26-1C17 6 6 6 0 0Z"/></g><g transform="translate(376.2 420.5) rotate(30) scale(0.50)"><path class="lf" style="--d:0.24s" fill="#4f7d3a" d="M0 0C5-7 17-8 26-1C17 6 6 6 0 0Z"/></g></g><g class="flowers"><g class="fl" style="--d:1.51s" transform="translate(20.0 360.0)"><g class="fl-in"><g fill="#9c6bb0"><ellipse rx="4.4" ry="8.0" cy="-6.8" transform="rotate(0)"/><ellipse rx="4.4" ry="8.0" cy="-6.8" transform="rotate(72)"/><ellipse rx="4.4" ry="8.0" cy="-6.8" transform="rotate(144)"/><ellipse rx="4.4" ry="8.0" cy="-6.8" transform="rotate(216)"/><ellipse rx="4.4" ry="8.0" cy="-6.8" transform="rotate(288)"/></g><g fill="#6d3a7a" transform="scale(.55)"><ellipse rx="4.4" ry="8.0" cy="-6.8" transform="rotate(0)"/><ellipse rx="4.4" ry="8.0" cy="-6.8" transform="rotate(72)"/><ellipse rx="4.4" ry="8.0" cy="-6.8" transform="rotate(144)"/><ellipse rx="4.4" ry="8.0" cy="-6.8" transform="rotate(216)"/><ellipse rx="4.4" ry="8.0" cy="-6.8" transform="rotate(288)"/></g><circle r="2.6" fill="#f2c14e"/></g></g><g class="fl" style="--d:1.66s" transform="translate(16.2 336.7)"><g class="fl-in"><circle r="3.4" fill="#9c6bb0"/><circle r="1.6" fill="#6d3a7a"/></g></g><g class="fl" style="--d:1.61s" transform="translate(20.0 262.5)"><g class="fl-in"><g fill="#c39bd3"><ellipse rx="4.3" ry="7.9" cy="-6.7" transform="rotate(0)"/><ellipse rx="4.3" ry="7.9" cy="-6.7" transform="rotate(72)"/><ellipse rx="4.3" ry="7.9" cy="-6.7" transform="rotate(144)"/><ellipse rx="4.3" ry="7.9" cy="-6.7" transform="rotate(216)"/><ellipse rx="4.3" ry="7.9" cy="-6.7" transform="rotate(288)"/></g><g fill="#8a4f9e" transform="scale(.55)"><ellipse rx="4.3" ry="7.9" cy="-6.7" transform="rotate(0)"/><ellipse rx="4.3" ry="7.9" cy="-6.7" transform="rotate(72)"/><ellipse rx="4.3" ry="7.9" cy="-6.7" transform="rotate(144)"/><ellipse rx="4.3" ry="7.9" cy="-6.7" transform="rotate(216)"/><ellipse rx="4.3" ry="7.9" cy="-6.7" transform="rotate(288)"/></g><circle r="2.6" fill="#f2c14e"/></g></g><g class="fl" style="--d:1.76s" transform="translate(15.0 238.0)"><g class="fl-in"><circle r="3.4" fill="#c39bd3"/><circle r="1.6" fill="#8a4f9e"/></g></g><g class="fl" style="--d:1.72s" transform="translate(25.7 155.2)"><g class="fl-in"><g fill="#8f5fa3"><ellipse rx="4.2" ry="7.6" cy="-6.5" transform="rotate(0)"/><ellipse rx="4.2" ry="7.6" cy="-6.5" transform="rotate(72)"/><ellipse rx="4.2" ry="7.6" cy="-6.5" transform="rotate(144)"/><ellipse rx="4.2" ry="7.6" cy="-6.5" transform="rotate(216)"/><ellipse rx="4.2" ry="7.6" cy="-6.5" transform="rotate(288)"/></g><g fill="#5a2d66" transform="scale(.55)"><ellipse rx="4.2" ry="7.6" cy="-6.5" transform="rotate(0)"/><ellipse rx="4.2" ry="7.6" cy="-6.5" transform="rotate(72)"/><ellipse rx="4.2" ry="7.6" cy="-6.5" transform="rotate(144)"/><ellipse rx="4.2" ry="7.6" cy="-6.5" transform="rotate(216)"/><ellipse rx="4.2" ry="7.6" cy="-6.5" transform="rotate(288)"/></g><circle r="2.6" fill="#f2c14e"/></g></g><g class="fl" style="--d:1.87s" transform="translate(30.2 140.8)"><g class="fl-in"><circle r="3.4" fill="#8f5fa3"/><circle r="1.6" fill="#5a2d66"/></g></g><g class="fl" style="--d:1.81s" transform="translate(68.8 76.8)"><g class="fl-in"><g fill="#9c6bb0"><ellipse rx="3.9" ry="7.1" cy="-6.0" transform="rotate(0)"/><ellipse rx="3.9" ry="7.1" cy="-6.0" transform="rotate(72)"/><ellipse rx="3.9" ry="7.1" cy="-6.0" transform="rotate(144)"/><ellipse rx="3.9" ry="7.1" cy="-6.0" transform="rotate(216)"/><ellipse rx="3.9" ry="7.1" cy="-6.0" transform="rotate(288)"/></g><g fill="#6d3a7a" transform="scale(.55)"><ellipse rx="3.9" ry="7.1" cy="-6.0" transform="rotate(0)"/><ellipse rx="3.9" ry="7.1" cy="-6.0" transform="rotate(72)"/><ellipse rx="3.9" ry="7.1" cy="-6.0" transform="rotate(144)"/><ellipse rx="3.9" ry="7.1" cy="-6.0" transform="rotate(216)"/><ellipse rx="3.9" ry="7.1" cy="-6.0" transform="rotate(288)"/></g><circle r="2.6" fill="#f2c14e"/></g></g><g class="fl" style="--d:1.96s" transform="translate(84.9 67.0)"><g class="fl-in"><circle r="3.4" fill="#9c6bb0"/><circle r="1.6" fill="#6d3a7a"/></g></g><g class="fl" style="--d:1.89s" transform="translate(137.3 31.3)"><g class="fl-in"><g fill="#c39bd3"><ellipse rx="3.6" ry="6.6" cy="-5.6" transform="rotate(0)"/><ellipse rx="3.6" ry="6.6" cy="-5.6" transform="rotate(72)"/><ellipse rx="3.6" ry="6.6" cy="-5.6" transform="rotate(144)"/><ellipse rx="3.6" ry="6.6" cy="-5.6" transform="rotate(216)"/><ellipse rx="3.6" ry="6.6" cy="-5.6" transform="rotate(288)"/></g><g fill="#8a4f9e" transform="scale(.55)"><ellipse rx="3.6" ry="6.6" cy="-5.6" transform="rotate(0)"/><ellipse rx="3.6" ry="6.6" cy="-5.6" transform="rotate(72)"/><ellipse rx="3.6" ry="6.6" cy="-5.6" transform="rotate(144)"/><ellipse rx="3.6" ry="6.6" cy="-5.6" transform="rotate(216)"/><ellipse rx="3.6" ry="6.6" cy="-5.6" transform="rotate(288)"/></g><circle r="2.6" fill="#f2c14e"/></g></g><g class="fl" style="--d:2.04s" transform="translate(155.9 19.2)"><g class="fl-in"><circle r="3.4" fill="#c39bd3"/><circle r="1.6" fill="#8a4f9e"/></g></g><g class="fl" style="--d:1.89s" transform="translate(255.6 28.8)"><g class="fl-in"><g fill="#8f5fa3"><ellipse rx="4.2" ry="7.6" cy="-6.5" transform="rotate(0)"/><ellipse rx="4.2" ry="7.6" cy="-6.5" transform="rotate(72)"/><ellipse rx="4.2" ry="7.6" cy="-6.5" transform="rotate(144)"/><ellipse rx="4.2" ry="7.6" cy="-6.5" transform="rotate(216)"/><ellipse rx="4.2" ry="7.6" cy="-6.5" transform="rotate(288)"/></g><g fill="#5a2d66" transform="scale(.55)"><ellipse rx="4.2" ry="7.6" cy="-6.5" transform="rotate(0)"/><ellipse rx="4.2" ry="7.6" cy="-6.5" transform="rotate(72)"/><ellipse rx="4.2" ry="7.6" cy="-6.5" transform="rotate(144)"/><ellipse rx="4.2" ry="7.6" cy="-6.5" transform="rotate(216)"/><ellipse rx="4.2" ry="7.6" cy="-6.5" transform="rotate(288)"/></g><circle r="2.6" fill="#f2c14e"/></g></g><g class="fl" style="--d:2.04s" transform="translate(285.1 35.3)"><g class="fl-in"><circle r="3.4" fill="#8f5fa3"/><circle r="1.6" fill="#5a2d66"/></g></g><g class="fl" style="--d:1.81s" transform="translate(325.9 71.4)"><g class="fl-in"><g fill="#9c6bb0"><ellipse rx="4.6" ry="8.3" cy="-7.1" transform="rotate(0)"/><ellipse rx="4.6" ry="8.3" cy="-7.1" transform="rotate(72)"/><ellipse rx="4.6" ry="8.3" cy="-7.1" transform="rotate(144)"/><ellipse rx="4.6" ry="8.3" cy="-7.1" transform="rotate(216)"/><ellipse rx="4.6" ry="8.3" cy="-7.1" transform="rotate(288)"/></g><g fill="#6d3a7a" transform="scale(.55)"><ellipse rx="4.6" ry="8.3" cy="-7.1" transform="rotate(0)"/><ellipse rx="4.6" ry="8.3" cy="-7.1" transform="rotate(72)"/><ellipse rx="4.6" ry="8.3" cy="-7.1" transform="rotate(144)"/><ellipse rx="4.6" ry="8.3" cy="-7.1" transform="rotate(216)"/><ellipse rx="4.6" ry="8.3" cy="-7.1" transform="rotate(288)"/></g><circle r="2.6" fill="#f2c14e"/></g></g><g class="fl" style="--d:1.96s" transform="translate(335.0 96.3)"><g class="fl-in"><circle r="3.4" fill="#9c6bb0"/><circle r="1.6" fill="#6d3a7a"/></g></g><g class="fl" style="--d:1.72s" transform="translate(372.3 148.0)"><g class="fl-in"><g fill="#c39bd3"><ellipse rx="3.9" ry="7.1" cy="-6.1" transform="rotate(0)"/><ellipse rx="3.9" ry="7.1" cy="-6.1" transform="rotate(72)"/><ellipse rx="3.9" ry="7.1" cy="-6.1" transform="rotate(144)"/><ellipse rx="3.9" ry="7.1" cy="-6.1" transform="rotate(216)"/><ellipse rx="3.9" ry="7.1" cy="-6.1" transform="rotate(288)"/></g><g fill="#8a4f9e" transform="scale(.55)"><ellipse rx="3.9" ry="7.1" cy="-6.1" transform="rotate(0)"/><ellipse rx="3.9" ry="7.1" cy="-6.1" transform="rotate(72)"/><ellipse rx="3.9" ry="7.1" cy="-6.1" transform="rotate(144)"/><ellipse rx="3.9" ry="7.1" cy="-6.1" transform="rotate(216)"/><ellipse rx="3.9" ry="7.1" cy="-6.1" transform="rotate(288)"/></g><circle r="2.6" fill="#f2c14e"/></g></g><g class="fl" style="--d:1.87s" transform="translate(374.3 165.8)"><g class="fl-in"><circle r="3.4" fill="#c39bd3"/><circle r="1.6" fill="#8a4f9e"/></g></g><g class="fl" style="--d:1.61s" transform="translate(380.0 260.0)"><g class="fl-in"><g fill="#8f5fa3"><ellipse rx="4.5" ry="8.3" cy="-7.0" transform="rotate(0)"/><ellipse rx="4.5" ry="8.3" cy="-7.0" transform="rotate(72)"/><ellipse rx="4.5" ry="8.3" cy="-7.0" transform="rotate(144)"/><ellipse rx="4.5" ry="8.3" cy="-7.0" transform="rotate(216)"/><ellipse rx="4.5" ry="8.3" cy="-7.0" transform="rotate(288)"/></g><g fill="#5a2d66" transform="scale(.55)"><ellipse rx="4.5" ry="8.3" cy="-7.0" transform="rotate(0)"/><ellipse rx="4.5" ry="8.3" cy="-7.0" transform="rotate(72)"/><ellipse rx="4.5" ry="8.3" cy="-7.0" transform="rotate(144)"/><ellipse rx="4.5" ry="8.3" cy="-7.0" transform="rotate(216)"/><ellipse rx="4.5" ry="8.3" cy="-7.0" transform="rotate(288)"/></g><circle r="2.6" fill="#f2c14e"/></g></g><g class="fl" style="--d:1.76s" transform="translate(374.9 274.5)"><g class="fl-in"><circle r="3.4" fill="#8f5fa3"/><circle r="1.6" fill="#5a2d66"/></g></g><g class="fl" style="--d:1.51s" transform="translate(380.0 357.5)"><g class="fl-in"><g fill="#9c6bb0"><ellipse rx="3.6" ry="6.5" cy="-5.6" transform="rotate(0)"/><ellipse rx="3.6" ry="6.5" cy="-5.6" transform="rotate(72)"/><ellipse rx="3.6" ry="6.5" cy="-5.6" transform="rotate(144)"/><ellipse rx="3.6" ry="6.5" cy="-5.6" transform="rotate(216)"/><ellipse rx="3.6" ry="6.5" cy="-5.6" transform="rotate(288)"/></g><g fill="#6d3a7a" transform="scale(.55)"><ellipse rx="3.6" ry="6.5" cy="-5.6" transform="rotate(0)"/><ellipse rx="3.6" ry="6.5" cy="-5.6" transform="rotate(72)"/><ellipse rx="3.6" ry="6.5" cy="-5.6" transform="rotate(144)"/><ellipse rx="3.6" ry="6.5" cy="-5.6" transform="rotate(216)"/><ellipse rx="3.6" ry="6.5" cy="-5.6" transform="rotate(288)"/></g><circle r="2.6" fill="#f2c14e"/></g></g><g class="fl" style="--d:1.66s" transform="translate(380.9 381.9)"><g class="fl-in"><circle r="3.4" fill="#9c6bb0"/><circle r="1.6" fill="#6d3a7a"/></g></g></g>
-        <g class="bell">
-          <g class="bell-swing">
-            <path d="M200 6v16" stroke="#6d3a7a" stroke-width="3"/>
-            <path d="M188 10c-10-8-22-4-20 4s16 6 32 0c16 6 30 4 32-4s-10-12-20-4" fill="#c39bd3" stroke="#6d3a7a" stroke-width="2"/>
-            <circle cx="200" cy="12" r="5" fill="#6d3a7a"/>
-            <path d="M200 18v14" stroke="#a8721a" stroke-width="3"/>
-            <g class="clapper"><circle cx="200" cy="74" r="6" fill="#a8721a"/></g>
-            <defs><linearGradient id="bg" x1="0" x2="1"><stop offset="0" stop-color="#f6d27a"/><stop offset=".45" stop-color="#e0a43a"/><stop offset="1" stop-color="#a8721a"/></linearGradient></defs>
-            <path d="M200 30c-12 0-19 9-20 22-1 9-4 15-10 20h60c-6-5-9-11-10-20-1-13-8-22-20-22z" fill="url(#bg)" stroke="#8a5d14" stroke-width="1.5"/>
-            <rect x="166" y="70" width="68" height="6" rx="3" fill="#a8721a"/>
-            <path d="M190 40c-3 4-4 10-5 18" stroke="#fff5d6" stroke-width="3" stroke-linecap="round" fill="none" opacity=".8"/>
-          </g>
-        </g>
-        <g class="waves"><circle cx="200" cy="76" r="40"/><circle cx="200" cy="76" r="40"/><circle cx="200" cy="76" r="40"/></g>
-      </svg>
-      <svg class="spark" style="left:44%;top:12%;--sx:-110px;--sy:-30px" viewBox="0 0 16 16"><path d="M8 0l2 6 6 2-6 2-2 6-2-6-6-2 6-2z" fill="currentColor"/></svg>
-      <svg class="spark" style="left:52%;top:12%;--sx:120px;--sy:-10px;--sd:.15s" viewBox="0 0 16 16"><path d="M8 0l2 6 6 2-6 2-2 6-2-6-6-2 6-2z" fill="currentColor"/></svg>
-      <svg class="spark" style="left:48%;top:14%;--sx:-60px;--sy:90px;--sd:.3s" viewBox="0 0 16 16"><path d="M8 0l2 6 6 2-6 2-2 6-2-6-6-2 6-2z" fill="currentColor"/></svg>
-      <svg class="spark" style="left:50%;top:14%;--sx:80px;--sy:110px;--sd:.45s" viewBox="0 0 16 16"><path d="M8 0l2 6 6 2-6 2-2 6-2-6-6-2 6-2z" fill="currentColor"/></svg>
-      <svg class="spark" style="left:47%;top:10%;--sx:20px;--sy:-70px;--sd:.2s" viewBox="0 0 16 16"><path d="M8 0l2 6 6 2-6 2-2 6-2-6-6-2 6-2z" fill="currentColor"/></svg>
+      <div class="slot s-arch" style="--i:0"></div>
+      <div class="slot s-circ" style="--i:1"></div>
+      <div class="slot s-sq" style="--i:2"></div>
+      <div class="pc p-arch" style="--i:0" data-imgs="vrtic-deca-dvoriste,g6a,g8a"><img src="assets/vrtic-deca-dvoriste.webp" alt="Deca se igraju u travnatom dvorištu vrtića Zvončica u Zemunu" width="800" height="600" fetchpriority="high"></div>
+      <div class="pc p-circ" style="--i:1" data-imgs="dvoriste1,vaspitac1,g12"><img src="assets/dvoriste1.webp" alt="Vaspitači i deca na travi u dvorištu vrtića" width="600" height="800"></div>
+      <div class="pc p-sq" style="--i:2" data-imgs="g1a,g10,g11"><img src="assets/g1a.webp" alt="Čas plivanja sa instruktorima na bazenu" width="1200" height="900"></div>
+      <span class="deco d-star" style="--i:0" aria-hidden="true"><svg viewBox="0 0 64 64"><path d="M32 4l8 18 20 2-15 13 5 20-18-11-18 11 5-20L4 24l20-2z" fill="#fff0b8" stroke="#3d3150" stroke-width="3" stroke-linejoin="round"/></svg></span>
+      <span class="deco d-tri" style="--i:1" aria-hidden="true"><svg viewBox="0 0 40 40"><path d="M20 4l16 30H4z" fill="#d9eaf8" stroke="#3d3150" stroke-width="3" stroke-linejoin="round"/></svg></span>
+      <span class="deco d-dot" style="--i:2" aria-hidden="true"><svg viewBox="0 0 32 32"><circle cx="16" cy="16" r="13" fill="#fadbe4" stroke="#3d3150" stroke-width="3"/></svg></span>
 
       <div class="f-card f-price">
         <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 12v9H4v-9M2 7h20v5H2zM12 21V7M12 7H7.5a2.5 2.5 0 1 1 0-5C11 2 12 7 12 7zM12 7h4.5a2.5 2.5 0 1 0 0-5C13 2 12 7 12 7z"/></svg></span>
         <span><small>Osnovna cena</small><b>11.000 RSD</b><span>sve sekcije u ceni</span></span>
       </div>
-      <figure class="f-card f-pola" style="margin:0">
-        <img src="assets/dvoriste1.webp" alt="Vaspitači i deca na travi u dvorištu vrtića" width="600" height="800" loading="lazy">
-        <p>svaki dan napolju</p>
-      </figure>
       <div class="stamp" aria-hidden="true">
-        <svg viewBox="0 0 120 120"><defs><path id="cp" d="M60 60m-48 0a48 48 0 1 1 96 0a48 48 0 1 1-96 0"/></defs><text font-family="Nunito" font-weight="800" font-size="11" letter-spacing="3.2" fill="#4a2a4c"><textPath href="#cp">VRTIĆ I JASLICE · ZEMUN · ZVONČICA ·</textPath></text></svg>
+        <svg viewBox="0 0 120 120"><defs><path id="cp" d="M60 60m-48 0a48 48 0 1 1 96 0a48 48 0 1 1-96 0"/></defs><text font-family="Nunito" font-weight="800" font-size="11" letter-spacing="3.2" fill="#3d3150"><textPath href="#cp">VRTIĆ I JASLICE · ZEMUN · ZVONČICA ·</textPath></text></svg>
         <span class="core"><span>30<small>GODINA</small></span></span>
       </div>
     </div>
@@ -754,7 +707,7 @@ footer a:hover{color:var(--honey)}
       </article>
       <article class="prog" data-rv style="--rd:.08s">
         <div class="pimg"><img src="assets/vrtic-program-pojedinacno.webp" alt="Deca za stolovima u grupnoj sobi vrtića" loading="lazy" width="800" height="600"><span class="tag">3–7 godina</span></div>
-        <div class="pb"><h3>Vrtićka i predškolska grupa</h3><p><span class="s">Godine uzleta i principi Marije Montessori.</span><span class="s">Do 10 dece, da svako bude viđeno.</span></p><button class="btn ter" data-open="d-vrtic">Više o grupi</button></div>
+        <div class="pb"><h3>Vrtićka i <span style="white-space:nowrap">predškolska grupa</span></h3><p><span class="s">Godine uzleta i principi Marije Montessori.</span><span class="s">Do 10 dece, da svako bude viđeno.</span></p><button class="btn ter" data-open="d-vrtic">Više o grupi</button></div>
       </article>
       <article class="prog" data-rv style="--rd:.16s">
         <div class="pimg"><img src="assets/engleski.webp" alt="Učiteljica engleskog sa decom" loading="lazy" width="800" height="600"><span class="tag free">Besplatno</span></div>
@@ -803,11 +756,16 @@ footer a:hover{color:var(--honey)}
     <div class="ppl-grid">
       <div data-rv>
         <span class="eyebrow">Ljudi u Zvončici</span>
-        <h2 style="margin:16px 0 64px">Deca znaju vaspitača po imenu.</h2>
-        <blockquote class="quote" style="margin:0">
-          Moj cilj je da deca zavole učenje, da nauče da savladaju izazove i da razumeju koliko je engleski važan za budućnost koja se gradi od malih nogu.
-          <cite><img src="assets/engleski.webp" alt="" loading="lazy"><span><b>Jelena Šibanić</b>učiteljica engleskog, Akademija Oxford</span></cite>
-        </blockquote>
+        <h2 style="margin:16px 0 20px">Tim koji poznaje svako dete.</h2>
+        <p class="lead">
+          <span class="s">Vaspitači, pedagozi i instruktori rade sa malim grupama.</span>
+          <span class="s">Zato svako dete ima nekoga ko ga zaista prati.</span>
+        </p>
+        <div class="pfacts">
+          <div class="pfact"><b>10</b><span>dece najviše po vaspitaču</span></div>
+          <div class="pfact"><b>1</b><span>referentni vaspitač za svako dete u jaslicama</span></div>
+          <div class="pfact"><b>2</b><span>stručnjaka prate razvoj: psiholog i logoped</span></div>
+        </div>
       </div>
       <ul class="roles" data-rv style="--rd:.1s">
         <li><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></i><span><b>Medicinske sestre-vaspitači</b><span>Jaslena grupa i referentni vaspitač za svako dete</span></span></li>
@@ -832,9 +790,9 @@ footer a:hover{color:var(--honey)}
 </section>
 
 <!-- KAKO SMO RASLI -->
-<section class="sec tree-sec" id="prica">
-  <div class="wrap">
-    <div class="sec-head center" data-rv>
+<section class="sec story" id="prica">
+  <div class="wrap story-head">
+    <div class="sec-head" data-rv>
       <span class="eyebrow">Kako smo rasli</span>
       <h2>Nismo počeli kao brend. <em class="hand">Počeli smo kao ideja.</em></h2>
       <p class="lead">
@@ -842,32 +800,22 @@ footer a:hover{color:var(--honey)}
         <span class="s">Reč po reč, generacija po generacija.</span>
       </p>
     </div>
-    <div class="tree" id="tree">
-      <div class="trunk"><i></i></div>
-      <div class="ms">
-        <svg class="branch" viewBox="0 0 96 64"><path class="br" d="M0 8C32 8 56 16 80 40"/><path class="bl" d="M48 14c4-12 18-14 24-10-4 8-16 14-24 10z" fill="#4f7d3a"/><circle class="fruit" cx="82" cy="46" r="10" fill="#c43d3d"/></svg>
-        <div class="card"><span class="yr">1996</span><h3>Osnivanje</h3><p>Jedan od prvih privatnih vrtića u Zemunu, porodična ustanova sa jasnom idejom. Principi Marije Montessori od prvog dana.</p><img src="assets/tradicija.webp" alt="Stara fotografija iz albuma vrtića: deca u kočijama sa Deda Mrazom" loading="lazy"></div>
+    <div class="story-big" data-rv style="--rd:.1s"><b>30</b><span>godina u Zemunu</span></div>
+  </div>
+  <div class="story-pin" id="storyPin">
+    <div class="story-sticky">
+      <div class="wrap">
+        <div class="story-track" id="storyTrack">
+          <article class="scard" style="--c:var(--lilac)"><span class="yt">Početak</span><span class="yr">1996</span><h3>Osnivanje</h3><p>Jedan od prvih privatnih vrtića u Zemunu, porodična ustanova. Principi Marije Montessori od prvog dana.</p><img src="assets/tradicija.webp" alt="Stara fotografija iz albuma vrtića: deca u kočijama sa Deda Mrazom" loading="lazy"></article>
+          <article class="scard" style="--c:var(--leaf-d)"><span class="yt">Zvanično</span><span class="yr">2005</span><h3>Akreditacija</h3><p>Ministarstvo prosvete potvrdilo je kvalitet programa i prostora.</p><p style="font-size:16px;color:var(--muted)">Broj akreditacije<br>610-00-00062/2005/03</p></article>
+          <article class="scard" style="--c:var(--sky)"><span class="yt">Jezik</span><span class="yr">2010</span><h3>Oxford engleski</h3><p>Besplatan engleski za predškolce postaje deo svakodnevice.</p><img src="assets/g11.webp" alt="Deca za stolom u grupnoj sobi" loading="lazy" style="object-position:50% 30%"></article>
+          <article class="scard" style="--c:var(--butter)"><span class="yt">Za roditelje</span><span class="yr">2015</span><h3>Subvencije Grada</h3><p>Ulazimo u sistem gradskih subvencija i pomažemo roditeljima kroz prijavu.</p></article>
+          <article class="scard" style="--c:var(--honey)"><span class="yt">Program</span><span class="yr">2019</span><h3>Godine uzleta</h3><p>Akreditovani program postaje nosilac rada u predškolskoj grupi.</p><img src="assets/pisanje.webp" alt="Dete vežba pisanje slova" loading="lazy"></article>
+          <article class="scard" style="--c:var(--rose)"><span class="yt">Danas</span><span class="yr">500+</span><h3>porodica</h3><p>Neka deca su odrasla i danas nam vraćaju svoju decu.</p><img src="assets/vaspitac1.webp" alt="Vaspitač i nasmejana deca" loading="lazy"></article>
+        </div>
+        <div class="story-bar"><i id="storyBar"></i></div>
+        <p class="story-hint">1996 → danas</p>
       </div>
-      <div class="ms">
-        <svg class="branch" viewBox="0 0 96 64"><path class="br" d="M0 8C32 8 56 16 80 40"/><path class="bl" d="M48 14c4-12 18-14 24-10-4 8-16 14-24 10z" fill="#3f6b34"/><circle class="fruit" cx="82" cy="46" r="10" fill="#e0a43a"/></svg>
-        <div class="card"><span class="yr">2005</span><h3>Akreditacija</h3><p>Ministarstvo prosvete zvanično je potvrdilo kvalitet programa i prostora. Broj akreditacije 610-00-00062/2005/03.</p></div>
-      </div>
-      <div class="ms">
-        <svg class="branch" viewBox="0 0 96 64"><path class="br" d="M0 8C32 8 56 16 80 40"/><path class="bl" d="M48 14c4-12 18-14 24-10-4 8-16 14-24 10z" fill="#5e8a43"/><circle class="fruit" cx="82" cy="46" r="10" fill="#8a4f9e"/></svg>
-        <div class="card"><span class="yr">2010</span><h3>Oxford engleski</h3><p>Besplatan engleski za predškolce postaje deo svakodnevice u vrtiću.</p></div>
-      </div>
-      <div class="ms">
-        <svg class="branch" viewBox="0 0 96 64"><path class="br" d="M0 8C32 8 56 16 80 40"/><path class="bl" d="M48 14c4-12 18-14 24-10-4 8-16 14-24 10z" fill="#4f7d3a"/><circle class="fruit" cx="82" cy="46" r="10" fill="#c43d3d"/></svg>
-        <div class="card"><span class="yr">2015</span><h3>Subvencije Grada</h3><p>Ulazimo u sistem gradskih subvencija i pomažemo roditeljima kroz prijavu.</p></div>
-      </div>
-      <div class="ms">
-        <svg class="branch" viewBox="0 0 96 64"><path class="br" d="M0 8C32 8 56 16 80 40"/><path class="bl" d="M48 14c4-12 18-14 24-10-4 8-16 14-24 10z" fill="#3f6b34"/><circle class="fruit" cx="82" cy="46" r="10" fill="#e0a43a"/></svg>
-        <div class="card"><span class="yr">2019</span><h3>Godine uzleta</h3><p>Akreditovani program Godine uzleta postaje nosilac svakodnevnog rada u predškolskoj grupi.</p></div>
-      </div>
-      <svg class="crown" id="crown" viewBox="0 0 360 240" aria-hidden="true">
-        <path d="M174 240V150M180 200l-30-30M180 180l34-26" stroke="#6c4a34" stroke-width="12" stroke-linecap="round" fill="none"/><circle class="c" style="--i:0" cx="152" cy="29" r="32" fill="#6b9a4c"/><circle class="c" style="--i:1" cx="259" cy="39" r="27" fill="#5e8a43"/><circle class="c" style="--i:2" cx="205" cy="54" r="39" fill="#6b9a4c"/><circle class="c" style="--i:3" cx="204" cy="56" r="28" fill="#5e8a43"/><circle class="c" style="--i:4" cx="223" cy="57" r="35" fill="#6b9a4c"/><circle class="c" style="--i:5" cx="74" cy="62" r="36" fill="#4f7d3a"/><circle class="c" style="--i:6" cx="102" cy="63" r="27" fill="#3f6b34"/><circle class="c" style="--i:7" cx="287" cy="68" r="40" fill="#5e8a43"/><circle class="c" style="--i:8" cx="168" cy="68" r="38" fill="#3f6b34"/><circle class="c" style="--i:9" cx="136" cy="71" r="33" fill="#3f6b34"/><circle class="c" style="--i:10" cx="159" cy="75" r="38" fill="#3f6b34"/><circle class="c" style="--i:11" cx="125" cy="81" r="27" fill="#6b9a4c"/><circle class="c" style="--i:12" cx="299" cy="81" r="34" fill="#6b9a4c"/><circle class="c" style="--i:13" cx="203" cy="84" r="28" fill="#3f6b34"/><circle class="c" style="--i:14" cx="73" cy="87" r="35" fill="#4f7d3a"/><circle class="c" style="--i:15" cx="296" cy="101" r="30" fill="#2f5428"/><circle class="c" style="--i:16" cx="175" cy="104" r="38" fill="#5e8a43"/><circle class="c" style="--i:17" cx="75" cy="106" r="38" fill="#6b9a4c"/><circle class="c" style="--i:18" cx="273" cy="111" r="27" fill="#5e8a43"/><circle class="c" style="--i:19" cx="281" cy="120" r="34" fill="#4f7d3a"/><circle class="c" style="--i:20" cx="128" cy="121" r="34" fill="#3f6b34"/><circle class="c" style="--i:21" cx="238" cy="140" r="38" fill="#5e8a43"/><circle class="c" style="--i:22" cx="187" cy="146" r="31" fill="#5e8a43"/><circle class="c" style="--i:23" cx="150" cy="155" r="38" fill="#5e8a43"/><circle class="c" style="--i:24" cx="206" cy="165" r="32" fill="#4f7d3a"/><circle class="c" style="--i:25" cx="193" cy="167" r="33" fill="#2f5428"/><circle class="c" style="--i:30" cx="111" cy="131" r="9" fill="#c43d3d"/><circle class="c" style="--i:31" cx="107" cy="129" r="9" fill="#e0a43a"/><circle class="c" style="--i:32" cx="166" cy="81" r="9" fill="#8a4f9e"/><circle class="c" style="--i:33" cx="271" cy="88" r="9" fill="#c43d3d"/><circle class="c" style="--i:34" cx="170" cy="136" r="9" fill="#e0a43a"/><circle class="c" style="--i:35" cx="158" cy="44" r="9" fill="#8a4f9e"/><circle class="c" style="--i:36" cx="138" cy="105" r="9" fill="#c43d3d"/><circle class="c" style="--i:37" cx="163" cy="122" r="9" fill="#e0a43a"/><circle class="c" style="--i:38" cx="206" cy="42" r="9" fill="#8a4f9e"/><circle class="c" style="--i:39" cx="158" cy="122" r="9" fill="#c43d3d"/><circle class="c" style="--i:40" cx="150" cy="86" r="9" fill="#e0a43a"/><circle class="c" style="--i:41" cx="145" cy="76" r="9" fill="#8a4f9e"/>
-      </svg>
-      <div class="crown-cap" data-rv><b><span data-count="500">500</span>+ porodica</b><span>Danas: neka deca su odrasla i vraćaju nam svoju decu.</span></div>
     </div>
   </div>
 </section>
@@ -1093,18 +1041,19 @@ footer a:hover{color:var(--honey)}
   bg.addEventListener('click',function(){var o=document.body.classList.toggle('menu-open');bg.setAttribute('aria-expanded',o)});
   document.querySelectorAll('#menu a').forEach(function(a){a.addEventListener('click',function(){document.body.classList.remove('menu-open');bg.setAttribute('aria-expanded',false)})});
 
-  // hero: venac izraste, zvonce zazvoni, fotografija se probudi u boji
-  var hv=document.getElementById('heroVis');
-  function ring(first){
-    hv.classList.remove('ringing','ring2'); void hv.offsetWidth;
-    hv.classList.add('ringing'); if(!first) hv.classList.add('ring2');
-    if(first) setTimeout(function(){hv.classList.add('rung')},250);
+  // hero: oblici upadnu u svoja mesta, pa se na 10 s jedan okrene i pokaže novu fotografiju
+  var hv=document.getElementById('heroVis'),pcs=[].slice.call(hv.querySelectorAll('.pc')),turn=0;
+  pcs.forEach(function(pc){pc.dataset.imgs.split(',').slice(1).forEach(function(n){new Image().src='assets/'+n+'.webp'});pc._k=0});
+  function flip(){
+    var pc=pcs[turn++%pcs.length],L=pc.dataset.imgs.split(','),img=pc.querySelector('img');
+    pc.classList.remove('flip');void pc.offsetWidth;pc.classList.add('flip');
+    setTimeout(function(){pc._k=(pc._k+1)%L.length;img.src='assets/'+L[pc._k]+'.webp'},400);
   }
   if(RM){hv.classList.add('go','rung')}
   else{
     requestAnimationFrame(function(){hv.classList.add('go')});
-    setTimeout(function(){ring(true)},2500);
-    setInterval(function(){if(!document.hidden) ring(false)},10000);
+    setTimeout(function(){hv.classList.add('rung')},1900);
+    setInterval(function(){if(!document.hidden)flip()},10000);
   }
 
   // reveal
@@ -1133,17 +1082,24 @@ footer a:hover{color:var(--honey)}
     rw.classList.remove('stamped');void rw.offsetWidth;rw.classList.add('stamped');
   })});
 
-  // drvo raste sa skrolom
-  var tree=document.getElementById('tree'),trunk=tree.querySelector('.trunk i'),ms=tree.querySelectorAll('.ms'),crown=document.getElementById('crown');
-  function grow(){
-    var r=tree.getBoundingClientRect(),vh=innerHeight;
-    var p=Math.max(0,Math.min(1,(vh*.62-r.top)/(r.height-200)));
-    trunk.style.setProperty('--p',p);
-    ms.forEach(function(m){var mr=m.getBoundingClientRect();if(mr.top+40<vh*.62)m.classList.add('on')});
-    if(crown.getBoundingClientRect().top<vh*.75)crown.classList.add('on');
+  // priča: kartice klize vodoravno dok se skroluje (desktop), na mobilnom se prevlače prstom
+  var pin=document.getElementById('storyPin'),track=document.getElementById('storyTrack'),bar=document.getElementById('storyBar'),dist=0;
+  var desk=matchMedia('(min-width:961px)');
+  function setupStory(){
+    if(desk.matches&&!RM){dist=Math.max(0,track.scrollWidth-track.parentElement.clientWidth);pin.style.height=(innerHeight-80+dist)+'px'}
+    else{dist=0;pin.style.height='';track.style.transform=''}
+    story();
   }
-  if(RM){ms.forEach(function(m){m.classList.add('on')});crown.classList.add('on')}
-  else{addEventListener('scroll',grow,{passive:true});grow()}
+  function story(){
+    if(dist){
+      var p=Math.max(0,Math.min(1,(80-pin.getBoundingClientRect().top)/dist));
+      track.style.transform='translateX('+(-p*dist)+'px)';bar.style.setProperty('--p',p);
+    }else{
+      var m=track.scrollWidth-track.clientWidth;bar.style.setProperty('--p',m>0?track.scrollLeft/m:1);
+    }
+  }
+  addEventListener('scroll',story,{passive:true});track.addEventListener('scroll',story,{passive:true});
+  addEventListener('resize',setupStory);addEventListener('load',setupStory);setupStory();
 
   // utisci (prave Google recenzije sa starog sajta)
   var R=[
